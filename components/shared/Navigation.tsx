@@ -80,10 +80,11 @@ export default function Navigation({ t, locale }: NavigationProps) {
 
             {/* Desktop Navigation */}
             <div className="hidden items-center space-x-8 md:flex">
-              <NavLink href={`/programs?lang=${locale}`}>{t.nav.findProgram}</NavLink>
-              <NavLink href={`/admissions?lang=${locale}`}>{t.nav.admissionGuide}</NavLink>
-              <NavLink href={`/costs?lang=${locale}`}>{t.nav.costsScholarships}</NavLink>
-              <NavLink href={`/campus?lang=${locale}`}>{t.nav.campusLife}</NavLink>
+              <NavLink href={`/?lang=${locale}`}>{t.nav.home || '홈'}</NavLink>
+              <NavLink href={`/preparation?lang=${locale}`}>{t.nav.preparation || '유학 준비'}</NavLink>
+              <NavLink href={`/arrival?lang=${locale}`}>{t.nav.arrival || '도착 후'}</NavLink>
+              <NavLink href={`/campus-life?lang=${locale}`}>{t.nav.campusLife || '캠퍼스 생활'}</NavLink>
+              <NavLink href={`/dashboard?lang=${locale}`}>{t.nav.dashboard || '대시보드'}</NavLink>
 
               {/* Language Selector */}
               <div className="relative">
@@ -157,10 +158,11 @@ export default function Navigation({ t, locale }: NavigationProps) {
                 exit={{ opacity: 0, height: 0 }}
                 className="mt-4 space-y-2 md:hidden"
               >
-                <MobileNavLink href={`/programs?lang=${locale}`}>{t.nav.findProgram}</MobileNavLink>
-                <MobileNavLink href={`/admissions?lang=${locale}`}>{t.nav.admissionGuide}</MobileNavLink>
-                <MobileNavLink href={`/costs?lang=${locale}`}>{t.nav.costsScholarships}</MobileNavLink>
-                <MobileNavLink href={`/campus?lang=${locale}`}>{t.nav.campusLife}</MobileNavLink>
+                <MobileNavLink href={`/?lang=${locale}`}>{t.nav.home || '홈'}</MobileNavLink>
+                <MobileNavLink href={`/preparation?lang=${locale}`}>{t.nav.preparation || '유학 준비'}</MobileNavLink>
+                <MobileNavLink href={`/arrival?lang=${locale}`}>{t.nav.arrival || '도착 후'}</MobileNavLink>
+                <MobileNavLink href={`/campus-life?lang=${locale}`}>{t.nav.campusLife || '캠퍼스 생활'}</MobileNavLink>
+                <MobileNavLink href={`/dashboard?lang=${locale}`}>{t.nav.dashboard || '대시보드'}</MobileNavLink>
                 <MobileNavLink href={`/apply?lang=${locale}`} highlight>
                   {t.nav.applyNow}
                 </MobileNavLink>

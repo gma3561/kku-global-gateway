@@ -10,7 +10,8 @@
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
-    "test:report": "playwright show-report playwright-report"
+    "test:report": "playwright show-report playwright-report",
+    "deploy": "npm run build && touch out/.nojekyll && git add -A && git commit -m 'Deploy to GitHub Pages' && git push origin main"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -14,16 +14,19 @@ export const ko = {
     language: '언어',
   },
   nav: {
+    home: '홈',
+    preparation: '유학 준비',
+    arrival: '도착 후',
+    campusLife: '캠퍼스 생활',
+    dashboard: '대시보드',
     findProgram: '프로그램 찾기',
     admissionGuide: '입학 안내',
     costsScholarships: '비용 & 장학금',
-    campusLife: '캠퍼스 생활',
     studentStories: '학생 후기',
     koreaInfo: '한국 생활 정보',
     applyNow: '지금 지원하기',
     login: '로그인',
     signup: '회원가입',
-    dashboard: '대시보드',
     logout: '로그아웃',
   },
   hero: {
@@ -84,6 +87,57 @@ export const ko = {
     description: '지금 바로 지원하고 글로벌 리더로 성장하세요',
     startApplication: '지원서 작성 시작',
     scheduleConsultation: '상담 예약',
+    needHelp: '도움이 필요하신가요?',
+  },
+  preparation: {
+    title: '유학 준비',
+    description: 'KKU 유학을 위한 단계별 준비 가이드',
+    visa: {
+      title: '비자 신청',
+      description: '학생 비자 신청 절차 및 필요 서류',
+    },
+    documents: {
+      title: '필수 서류',
+      description: '입학 및 비자를 위한 필수 서류',
+    },
+    accommodation: {
+      title: '숙소 예약',
+      description: '기숙사 및 주거 옵션',
+    },
+    travel: {
+      title: '항공권 및 여행',
+      description: '항공권 예약 및 여행 준비',
+    },
+    checklist: {
+      title: '출국 전 체크리스트',
+    },
+  },
+  arrival: {
+    title: '도착 후 안내',
+    description: '태국 도착 후 첫 주와 첫 달 체크리스트',
+    firstWeek: {
+      title: '첫 주 (1-7일)',
+    },
+    firstMonth: {
+      title: '첫 달 (1-30일)',
+    },
+  },
+  campusLife: {
+    title: '캠퍼스 라이프',
+    description: 'KKU에서의 학업, 활동, 그리고 성장',
+    academics: {
+      title: '학업 관리',
+    },
+    facilities: {
+      title: '캠퍼스 시설',
+    },
+    activities: {
+      title: '학생 활동',
+    },
+  },
+  dashboard: {
+    title: '나의 대시보드',
+    description: '유학 준비 및 학교생활 진행 상황',
   },
   footer: {
     quickLinks: '빠른 링크',
