@@ -2,33 +2,31 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Globe } from 'lucide-react';
 import { Translation } from '@/lib/i18n/translations/ko';
-import { Locale, locales } from '@/lib/i18n/config';
+import { Locale, locales, localeNames, localeFlags } from '@/lib/i18n/config';
+import { useLanguageStore } from '@/lib/store/languageStore';
 
 interface NavigationProps {
   t: Translation;
   locale: Locale;
 }
 
-const languages: { code: Locale; name: string; flag: string }[] = [
-  { code: 'ko', name: '한국어', flag: '🇰🇷' },
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'id', name: 'Indonesia', flag: '🇮🇩' },
-  { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' },
-  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-  { code: 'uz', name: "O'zbek", flag: '🇺🇿' },
-  { code: 'tl', name: 'Tagalog', flag: '🇵🇭' },
-  { code: 'th', name: 'ไทย', flag: '🇹🇭' },
-  { code: 'ms', name: 'Melayu', flag: '🇲🇾' },
-  { code: 'kk', name: 'Қазақ', flag: '🇰🇿' },
-];
+const languages: { code: Locale; name: string; flag: string }[] = locales.map(code => ({
+  code,
+  name: localeNames[code],
+  flag: localeFlags[code],
+}));
 
 export default function Navigation({ t, locale }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const { currentLocale, setLocale } = useLanguageStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +37,25 @@ export default function Navigation({ t, locale }: NavigationProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const currentLanguage = languages.find((lang) => lang.code === locale) || languages[0];
+  // Sync locale with store on mount and URL change
+  useEffect(() => {
+    if (locale !== currentLocale) {
+      setLocale(locale);
+    }
+  }, [locale, currentLocale, setLocale]);
+
+  const handleLanguageChange = (langCode: Locale) => {
+    setLocale(langCode);
+    setIsLangMenuOpen(false);
+
+    // Reload page with new language parameter
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set('lang', langCode);
+    const newUrl = `${pathname}?${searchParams.toString()}`;
+    window.location.href = newUrl;
+  };
+
+  const currentLanguage = languages.find((lang) => lang.code === currentLocale) || languages[0];
 
   return (
     <motion.nav
@@ -110,18 +126,22 @@ export default function Navigation({ t, locale }: NavigationProps) {
                         backdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.2)',
                       }}
-                      className="absolute right-0 mt-2 w-48 rounded-xl p-2 shadow-xl"
+                      className="absolute right-0 mt-2 w-48 rounded-xl p-2 shadow-xl z-50"
                     >
                       {languages.map((lang) => (
-                        <Link
+                        <button
                           key={lang.code}
-                          href={`/?lang=${lang.code}`}
-                          onClick={() => setIsLangMenuOpen(false)}
-                          className="flex items-center space-x-3 rounded-lg px-4 py-2 text-white transition-colors hover:bg-white/10"
+                          onClick={() => handleLanguageChange(lang.code)}
+                          className={`flex w-full items-center space-x-3 rounded-lg px-4 py-2 text-white transition-colors hover:bg-white/10 ${
+                            currentLocale === lang.code ? 'bg-white/20' : ''
+                          }`}
                         >
                           <span>{lang.flag}</span>
                           <span>{lang.name}</span>
-                        </Link>
+                          {currentLocale === lang.code && (
+                            <span className="ml-auto text-xs">✓</span>
+                          )}
+                        </button>
                       ))}
                     </motion.div>
                   )}
