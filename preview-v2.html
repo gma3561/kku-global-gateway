@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKU Global Gateway - 국제 유학생 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .typing-dot { animation: typing 1s ease-in-out infinite; }
+        .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+        .chat-message { animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-smooth { scroll-behavior: smooth; }
+
+        .language-btn {
+            transition: all 0.3s;
+        }
+        .language-btn.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            border: 2px solid transparent;
+        }
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        .tab-btn.active {
+            background: white;
+            color: #1e40af;
+            border-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 scroll-smooth">
+    <!-- Header with Language Selector -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold">KKU</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">경국대학교</h1>
+                        <p class="text-xs text-gray-600">Kyungkuk University</p>
+                    </div>
+                </div>
+
+                <!-- Language Selector -->
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="text-sm text-gray-600 mr-2">🌐</span>
+                    <button onclick="changeLanguage('ko')" class="language-btn active px-3 py-1 rounded-lg text-sm font-medium border border-gray-300" data-lang="ko">
+                        🇰🇷 한국어
+                    </button>
+                    <button onclick="changeLanguage('en')" class="language-btn px-3 py-1 rounded-lg text-sm font-medium border border-gray-300" data-lang="en">
+                        🇬🇧 English
+                    </button>
+                    <button onclick="changeLanguage('uz')" class="language-btn px-3 py-1 rounded-lg text-sm font-medium border border-gray-300" data-lang="uz">
+                        🇺🇿 O'zbek
+                    </button>
+                    <button onclick="changeLanguage('id')" class="language-btn px-3 py-1 rounded-lg text-sm font-medium border border-gray-300" data-lang="id">
+                        🇮🇩 Indonesia
+                    </button>
+                    <button onclick="changeLanguage('vi')" class="language-btn px-3 py-1 rounded-lg text-sm font-medium border border-gray-300" data-lang="vi">
+                        🇻🇳 Tiếng Việt
+                    </button>
+                    <button onclick="changeLanguage('ru')" class="language-btn px-3 py-1 rounded-lg text-sm font-medium border border-gray-300" data-lang="ru">
+                        🇷🇺 Русский
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24">
+        <!-- Tab Navigation -->
+        <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-6 sticky top-20 z-30 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex items-center gap-2 overflow-x-auto pb-2">
+                    <button onclick="switchTab('progress')" id="tab-progress" class="tab-btn active flex-shrink-0 px-6 py-3 rounded-lg font-semibold text-sm transition-all">
+                        📊 내 진행 상황
+                    </button>
+                    <button onclick="switchTab('admission-visa')" id="tab-admission-visa" class="tab-btn flex-shrink-0 px-6 py-3 rounded-lg font-semibold text-sm transition-all">
+                        📝 입학 & 비자
+                    </button>
+                    <button onclick="switchTab('cost-housing')" id="tab-cost-housing" class="tab-btn flex-shrink-0 px-6 py-3 rounded-lg font-semibold text-sm transition-all">
+                        💰 비용 & 주거
+                    </button>
+                    <button onclick="switchTab('scholarship-learning')" id="tab-scholarship-learning" class="tab-btn flex-shrink-0 px-6 py-3 rounded-lg font-semibold text-sm transition-all">
+                        🎓 장학금 & 학습
+                    </button>
+                    <button onclick="switchTab('life-preparation')" id="tab-life-preparation" class="tab-btn flex-shrink-0 px-6 py-3 rounded-lg font-semibold text-sm transition-all">
+                        🌟 생활 준비
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab Content: Progress -->
+        <div id="content-progress" class="tab-content">
+        <!-- My Progress Dashboard -->
+        <section id="progress" class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">📊 내 진행 상황</h2>
+                        <p class="text-gray-600 mt-2">유학 준비 과정을 한눈에 확인하고 관리하세요</p>
+                    </div>
+                    <button onclick="resetProgress()" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg text-sm transition-colors">
+                        🔄 초기화
+                    </button>
+                </div>
+
+                <!-- Progress Stepper -->
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-6">
+                    <div class="flex items-center justify-between mb-8">
+                        <div id="stage-1" class="flex flex-col items-center flex-1 cursor-pointer" onclick="setStage(1)">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-2 stage-circle">1</div>
+                            <div class="text-sm text-center font-medium stage-label">준비 시작</div>
+                            <div class="text-xs text-gray-500 text-center">6개월 전</div>
+                        </div>
+                        <div class="flex-1 h-1 mx-2 stage-line"></div>
+                        <div id="stage-2" class="flex flex-col items-center flex-1 cursor-pointer" onclick="setStage(2)">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-2 stage-circle">2</div>
+                            <div class="text-sm text-center font-medium stage-label">지원서 제출</div>
+                            <div class="text-xs text-gray-500 text-center">3개월 전</div>
+                        </div>
+                        <div class="flex-1 h-1 mx-2 stage-line"></div>
+                        <div id="stage-3" class="flex flex-col items-center flex-1 cursor-pointer" onclick="setStage(3)">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-2 stage-circle">3</div>
+                            <div class="text-sm text-center font-medium stage-label">입학 처리</div>
+                            <div class="text-xs text-gray-500 text-center">2개월 전</div>
+                        </div>
+                        <div class="flex-1 h-1 mx-2 stage-line"></div>
+                        <div id="stage-4" class="flex flex-col items-center flex-1 cursor-pointer" onclick="setStage(4)">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-2 stage-circle">4</div>
+                            <div class="text-sm text-center font-medium stage-label">출국 준비</div>
+                            <div class="text-xs text-gray-500 text-center">1개월 전</div>
+                        </div>
+                        <div class="flex-1 h-1 mx-2 stage-line"></div>
+                        <div id="stage-5" class="flex flex-col items-center flex-1 cursor-pointer" onclick="setStage(5)">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-2 stage-circle">5</div>
+                            <div class="text-sm text-center font-medium stage-label">한국 생활</div>
+                            <div class="text-xs text-gray-500 text-center">입국 후</div>
+                        </div>
+                    </div>
+
+                    <!-- Overall Progress Bar -->
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="font-semibold">전체 진행률</span>
+                            <span id="overall-progress-text" class="text-blue-600 font-bold">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="overall-progress-bar" class="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Stage Details -->
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Task Checklist -->
+                    <div class="md:col-span-2 bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span>✅</span>
+                            <span id="current-stage-title">현재 단계 체크리스트</span>
+                        </h3>
+                        <div id="task-list" class="space-y-2">
+                            <!-- Tasks will be dynamically loaded here -->
+                        </div>
+                        <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-2xl">💡</span>
+                                <span class="font-semibold">다음 단계:</span>
+                            </div>
+                            <p id="next-step-text" class="text-sm text-gray-700">
+                                모든 체크리스트를 완료하면 다음 단계로 진행하세요.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Statistics & Deadlines -->
+                    <div class="space-y-6">
+                        <!-- Statistics Card -->
+                        <div class="bg-white rounded-xl shadow-lg p-6">
+                            <h3 class="text-lg font-bold mb-4">📈 통계</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>완료된 작업</span>
+                                        <span id="completed-count" class="font-bold">0/0</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div id="completed-bar" class="bg-green-500 h-2 rounded-full transition-all" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>진행 중</span>
+                                        <span id="inprogress-count" class="font-bold">0</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>남은 작업</span>
+                                        <span id="remaining-count" class="font-bold">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Important Deadlines -->
+                        <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl shadow-lg p-6 border-2 border-orange-200">
+                            <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                                <span>⏰</span>
+                                <span>중요 마감일</span>
+                            </h3>
+                            <div id="deadlines-list" class="space-y-3">
+                                <!-- Deadlines will be shown here -->
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="bg-white rounded-xl shadow-lg p-6">
+                            <h3 class="text-lg font-bold mb-4">🚀 빠른 작업</h3>
+                            <div class="space-y-2">
+                                <button onclick="window.location.href='#admission'" class="w-full px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-sm transition-colors text-left">
+                                    📝 입학 절차 보기
+                                </button>
+                                <button onclick="window.location.href='#visa'" class="w-full px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-sm transition-colors text-left">
+                                    ✈️ 비자 정보 확인
+                                </button>
+                                <button onclick="window.location.href='#scholarship'" class="w-full px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-sm transition-colors text-left">
+                                    🎓 장학금 신청
+                                </button>
+                                <button onclick="document.getElementById('chatbot-button').click()" class="w-full px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg text-sm transition-colors">
+                                    💬 AI 상담 시작
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+        <!-- End Tab Content: Progress -->
+
+        <!-- Tab Content: Admission & Visa -->
+        <div id="content-admission-visa" class="tab-content hidden">
+        <!-- Admission Process -->
+        <section id="admission" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-gray-900">📝 입학 절차 (단계별 가이드)</h2>
+                <div class="space-y-4">
+                    <div class="border-l-4 border-blue-600 pl-6 py-4 bg-blue-50 rounded-r-lg">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                            <h3 class="text-xl font-bold">온라인 지원서 작성 (3월 / 9월)</h3>
+                        </div>
+                        <p class="text-gray-700">• 웹사이트에서 계정 생성 및 지원서 작성</p>
+                        <p class="text-gray-700">• 지원 수수료: ₩50,000 (환불 불가)</p>
+                        <p class="text-gray-700">• 1지망, 2지망 전공 선택 가능</p>
+                    </div>
+
+                    <div class="border-l-4 border-blue-600 pl-6 py-4 bg-blue-50 rounded-r-lg">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                            <h3 class="text-xl font-bold">서류 제출 (지원 후 2주 이내)</h3>
+                        </div>
+                        <p class="text-gray-700">✓ 고등학교 졸업증명서 (영문 또는 공증 번역본)</p>
+                        <p class="text-gray-700">✓ 고등학교 성적증명서 (GPA 2.5 이상)</p>
+                        <p class="text-gray-700">✓ 여권 사본</p>
+                        <p class="text-gray-700">✓ 증명사진 (3x4cm, 최근 6개월 이내)</p>
+                        <p class="text-gray-700">✓ 영어 능력 증명서 (TOEFL 80+ / IELTS 6.0+) 또는 한국어 능력 (TOPIK 3급+)</p>
+                        <p class="text-gray-700">✓ 추천서 2부</p>
+                        <p class="text-gray-700">✓ 자기소개서</p>
+                        <p class="text-gray-700">✓ 재정증명서 (최소 ₩20,000,000 이상)</p>
+                    </div>
+
+                    <div class="border-l-4 border-green-600 pl-6 py-4 bg-green-50 rounded-r-lg">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                            <h3 class="text-xl font-bold">합격 발표 (4월 / 10월)</h3>
+                        </div>
+                        <p class="text-gray-700">• 이메일 및 웹사이트 공지</p>
+                        <p class="text-gray-700">• 합격 통지서 다운로드</p>
+                    </div>
+
+                    <div class="border-l-4 border-orange-600 pl-6 py-4 bg-orange-50 rounded-r-lg">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
+                            <h3 class="text-xl font-bold">등록금 납부 (합격 후 2주 이내)</h3>
+                        </div>
+                        <p class="text-gray-700">• 은행 송금 또는 신용카드 결제</p>
+                        <p class="text-gray-700">• 입학금: ₩1,000,000 (1회)</p>
+                        <p class="text-gray-700">• 1학기 등록금: 전공별 상이</p>
+                    </div>
+
+                    <div class="border-l-4 border-purple-600 pl-6 py-4 bg-purple-50 rounded-r-lg">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">5</div>
+                            <h3 class="text-xl font-bold">비자 신청 및 입국</h3>
+                        </div>
+                        <p class="text-gray-700">• 표준입학허가서 발급 신청</p>
+                        <p class="text-gray-700">• 현지 한국 대사관에서 D-2 비자 신청</p>
+                        <p class="text-gray-700">• 비자 발급 후 항공권 예약</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visa Guide -->
+        <section id="visa" class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-gray-900">✈️ 비자 신청 완벽 가이드</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold mb-4 text-blue-600">📋 필요 서류</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600">✓</span>
+                                <span>비자 신청서 (대사관 양식)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600">✓</span>
+                                <span>여권 (유효기간 6개월 이상)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600">✓</span>
+                                <span>증명사진 2장 (3.5x4.5cm)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600">✓</span>
+                                <span>입학허가서 원본</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600">✓</span>
+                                <span>표준입학허가서 (대학 발급)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600">✓</span>
+                                <span>최종 학력 증명서</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600">✓</span>
+                                <span>재정증명서 (₩20,000,000+)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600">✓</span>
+                                <span>비자 발급 수수료 (국가별 상이)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold mb-4 text-blue-600">⏱️ 처리 기간 및 팁</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-semibold mb-2">처리 기간:</p>
+                                <p class="text-gray-700">• 일반: 2-4주</p>
+                                <p class="text-gray-700">• 긴급: 3-5일 (추가 비용)</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold mb-2">⚠️ 주의사항:</p>
+                                <p class="text-red-600">• 입학 2-3개월 전에 신청 시작</p>
+                                <p class="text-red-600">• 서류 불비 시 재심사로 지연</p>
+                                <p class="text-red-600">• 면접이 있을 수 있음</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold mb-2">💡 Pro Tips:</p>
+                                <p class="text-green-600">• 모든 서류는 영문 또는 한글로 준비</p>
+                                <p class="text-green-600">• 사본보다 원본 제출이 유리</p>
+                                <p class="text-green-600">• 대사관 방문 전 전화 예약 필수</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+                    <p class="font-bold text-yellow-800 mb-2">🚨 입국 후 90일 이내 필수 절차:</p>
+                    <p class="text-yellow-800">1. 외국인등록증 발급 (출입국관리사무소)</p>
+                    <p class="text-yellow-800">2. 건강보험 가입 (국민건강보험공단)</p>
+                    <p class="text-yellow-800">3. 은행 계좌 개설</p>
+                </div>
+            </div>
+        </section>
+        </div>
+        <!-- End Tab Content: Admission & Visa -->
+
+        <!-- Tab Content: Cost & Housing -->
+        <div id="content-cost-housing" class="tab-content hidden">
+        <!-- Cost Calculator -->
+        <section id="cost" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-gray-900">💰 유학 비용 계산기</h2>
+
+                <div class="bg-blue-50 p-8 rounded-xl shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">비용 항목 선택</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">전공</label>
+                                    <select id="major" onchange="calculateCost()" class="w-full p-2 border rounded-lg">
+                                        <option value="3000000">인문사회 (₩3,000,000/학기)</option>
+                                        <option value="3500000">자연과학 (₩3,500,000/학기)</option>
+                                        <option value="4000000">공학 (₩4,000,000/학기)</option>
+                                        <option value="5000000">의학 (₩5,000,000/학기)</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">기숙사</label>
+                                    <select id="dorm" onchange="calculateCost()" class="w-full p-2 border rounded-lg">
+                                        <option value="400000">4인실 (₩400,000/월)</option>
+                                        <option value="500000">2인실 (₩500,000/월)</option>
+                                        <option value="700000">1인실 (₩700,000/월)</option>
+                                        <option value="0">외부 거주 (직접 입력)</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">생활비 (월)</label>
+                                    <select id="living" onchange="calculateCost()" class="w-full p-2 border rounded-lg">
+                                        <option value="500000">절약형 (₩500,000)</option>
+                                        <option value="800000">일반형 (₩800,000)</option>
+                                        <option value="1200000">여유형 (₩1,200,000)</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">교재비 (학기당)</label>
+                                    <input type="number" id="books" value="300000" onchange="calculateCost()" class="w-full p-2 border rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">예상 비용 (1년)</h3>
+                            <div class="bg-white p-6 rounded-lg space-y-3">
+                                <div class="flex justify-between border-b pb-2">
+                                    <span>등록금 (2학기)</span>
+                                    <span id="tuition-total" class="font-bold">₩6,000,000</span>
+                                </div>
+                                <div class="flex justify-between border-b pb-2">
+                                    <span>기숙사 (12개월)</span>
+                                    <span id="dorm-total" class="font-bold">₩4,800,000</span>
+                                </div>
+                                <div class="flex justify-between border-b pb-2">
+                                    <span>생활비 (12개월)</span>
+                                    <span id="living-total" class="font-bold">₩6,000,000</span>
+                                </div>
+                                <div class="flex justify-between border-b pb-2">
+                                    <span>교재비 (2학기)</span>
+                                    <span id="books-total" class="font-bold">₩600,000</span>
+                                </div>
+                                <div class="flex justify-between border-b pb-2">
+                                    <span>보험료 (12개월)</span>
+                                    <span class="font-bold">₩1,200,000</span>
+                                </div>
+                                <div class="flex justify-between border-b pb-2">
+                                    <span>기타 (예비비)</span>
+                                    <span class="font-bold">₩1,000,000</span>
+                                </div>
+                                <div class="flex justify-between text-xl font-bold text-blue-600 pt-4 border-t-2">
+                                    <span>연간 총 예상 비용</span>
+                                    <span id="total-cost">₩19,600,000</span>
+                                </div>
+
+                                <div class="mt-4 p-4 bg-green-50 rounded-lg">
+                                    <p class="text-sm text-green-800 font-semibold">💡 절약 팁:</p>
+                                    <p class="text-sm text-green-700">• 장학금 신청 시 최대 50% 절감</p>
+                                    <p class="text-sm text-green-700">• 아르바이트로 월 ₩1,000,000 가능</p>
+                                    <p class="text-sm text-green-700">• 기숙사 거주 시 교통비 ₩0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Housing -->
+        <section id="housing" class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-gray-900">🏠 기숙사 및 숙소 정보</h2>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all">
+                        <div class="text-4xl mb-4">🏢</div>
+                        <h3 class="text-xl font-bold mb-3">4인실 기숙사</h3>
+                        <div class="text-3xl font-bold text-blue-600 mb-4">₩400,000<span class="text-sm text-gray-600">/월</span></div>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li>✓ 침대, 책상, 옷장 제공</li>
+                            <li>✓ 공용 욕실 및 샤워실</li>
+                            <li>✓ 무료 Wi-Fi</li>
+                            <li>✓ 냉난방 포함</li>
+                            <li>✓ 세탁실 이용 가능</li>
+                            <li>✓ 캠퍼스 도보 5분</li>
+                        </ul>
+                        <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors">
+                            신청하기
+                        </button>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all border-2 border-blue-500">
+                        <div class="absolute top-0 right-0 bg-blue-500 text-white px-3 py-1 text-xs rounded-bl-lg">인기</div>
+                        <div class="text-4xl mb-4">🏢🏢</div>
+                        <h3 class="text-xl font-bold mb-3">2인실 기숙사</h3>
+                        <div class="text-3xl font-bold text-blue-600 mb-4">₩500,000<span class="text-sm text-gray-600">/월</span></div>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li>✓ 침대, 책상, 옷장 제공</li>
+                            <li>✓ 실내 욕실</li>
+                            <li>✓ 무료 Wi-Fi</li>
+                            <li>✓ 냉난방 포함</li>
+                            <li>✓ 개인 공간 넓음</li>
+                            <li>✓ 캠퍼스 도보 3분</li>
+                        </ul>
+                        <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors">
+                            신청하기
+                        </button>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all">
+                        <div class="text-4xl mb-4">🏠</div>
+                        <h3 class="text-xl font-bold mb-3">1인실 기숙사</h3>
+                        <div class="text-3xl font-bold text-blue-600 mb-4">₩700,000<span class="text-sm text-gray-600">/월</span></div>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li>✓ 침대, 책상, 옷장 제공</li>
+                            <li>✓ 실내 욕실</li>
+                            <li>✓ 무료 Wi-Fi</li>
+                            <li>✓ 냉난방 포함</li>
+                            <li>✓ 완전 독립 공간</li>
+                            <li>✓ 미니 냉장고 제공</li>
+                        </ul>
+                        <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors">
+                            신청하기
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4">🏘️ 외부 숙소 옵션</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="border p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">원룸 (Studio)</h4>
+                            <p class="text-gray-700">월세: ₩400,000 - ₩700,000</p>
+                            <p class="text-gray-700">보증금: ₩5,000,000 - ₩10,000,000</p>
+                            <p class="text-sm text-gray-600 mt-2">캠퍼스 도보 10-20분 거리</p>
+                        </div>
+                        <div class="border p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">셰어하우스</h4>
+                            <p class="text-gray-700">월세: ₩300,000 - ₩500,000</p>
+                            <p class="text-gray-700">보증금: ₩1,000,000 - ₩3,000,000</p>
+                            <p class="text-sm text-gray-600 mt-2">국제 학생들과 함께 생활</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+        <!-- End Tab Content: Cost & Housing -->
+
+        <!-- Tab Content: Scholarship & Learning -->
+        <div id="content-scholarship-learning" class="tab-content hidden">
+        <!-- Scholarship -->
+        <section id="scholarship" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-gray-900">🎓 장학금 프로그램</h2>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl shadow-lg border-2 border-yellow-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="text-4xl">🏆</div>
+                            <div>
+                                <h3 class="text-xl font-bold">성적우수 장학금</h3>
+                                <p class="text-sm text-gray-600">Merit-based Scholarship</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="text-2xl font-bold text-yellow-700">등록금의 50-100%</div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <p><strong>지급 조건:</strong></p>
+                            <p>• 고등학교 GPA 3.5/4.0 이상</p>
+                            <p>• TOPIK 5급 이상 또는 TOEFL 100+ / IELTS 7.0+</p>
+                            <p>• 추가 시험 또는 인터뷰 있음</p>
+                            <p class="text-green-700 font-semibold mt-3">✓ 매학기 성적 유지 시 계속 지급</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-lg border-2 border-blue-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="text-4xl">🌏</div>
+                            <div>
+                                <h3 class="text-xl font-bold">국가별 특별 장학금</h3>
+                                <p class="text-sm text-gray-600">Country-Specific Scholarship</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="text-2xl font-bold text-blue-700">등록금의 30-50%</div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <p><strong>대상 국가:</strong></p>
+                            <p>• 인도네시아, 베트남, 필리핀, 태국</p>
+                            <p>• 우즈베키스탄, 카자흐스탄, 키르기스스탄</p>
+                            <p><strong>지급 조건:</strong></p>
+                            <p>• 해당 국가 국적자</p>
+                            <p>• GPA 3.0/4.0 이상</p>
+                            <p class="text-blue-700 font-semibold mt-3">✓ 선착순 지급 (매년 정원 제한)</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-lg border-2 border-green-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="text-4xl">💼</div>
+                            <div>
+                                <h3 class="text-xl font-bold">근로 장학금</h3>
+                                <p class="text-sm text-gray-600">Work-Study Program</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="text-2xl font-bold text-green-700">월 ₩500,000 - ₩1,000,000</div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <p><strong>근무 내용:</strong></p>
+                            <p>• 도서관 보조 업무</p>
+                            <p>• 국제교류팀 행정 지원</p>
+                            <p>• 튜터링 (후배 학생 지도)</p>
+                            <p><strong>근무 시간:</strong></p>
+                            <p>• 주 10-20시간</p>
+                            <p class="text-green-700 font-semibold mt-3">✓ 학업과 병행 가능</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl shadow-lg border-2 border-purple-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="text-4xl">📚</div>
+                            <div>
+                                <h3 class="text-xl font-bold">학업 장려 장학금</h3>
+                                <p class="text-sm text-gray-600">Academic Excellence Award</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="text-2xl font-bold text-purple-700">학기당 ₩2,000,000 - ₩5,000,000</div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <p><strong>지급 조건:</strong></p>
+                            <p>• 직전 학기 GPA 3.5/4.5 이상</p>
+                            <p>• 전공 관련 논문 발표 또는 공모전 수상</p>
+                            <p>• 봉사활동 30시간 이상</p>
+                            <p class="text-purple-700 font-semibold mt-3">✓ 매학기 신청 가능</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-xl">
+                    <h4 class="font-bold text-orange-800 mb-3">💡 장학금 신청 팁</h4>
+                    <ul class="space-y-2 text-orange-800">
+                        <li>✓ 입학 지원 시 동시에 장학금 신청</li>
+                        <li>✓ 여러 장학금 중복 수령 가능 (최대 100%까지)</li>
+                        <li>✓ 자기소개서에 장학금 필요성 강조</li>
+                        <li>✓ 추천서는 학업 능력을 강조하는 내용으로</li>
+                        <li>✓ 성적증명서는 최신 것으로 준비</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Korean Language -->
+        <section id="korean" class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-gray-900">📚 한국어 학습 프로그램</h2>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span class="text-2xl">🎓</span>
+                            무료 한국어 수업
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <p class="font-semibold">초급반 (TOPIK 0-1급)</p>
+                                <p class="text-sm text-gray-600">월/수/금 18:00-20:00</p>
+                                <p class="text-sm text-gray-600">한글, 기초 회화, 일상 표현</p>
+                            </div>
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <p class="font-semibold">중급반 (TOPIK 2-3급)</p>
+                                <p class="text-sm text-gray-600">화/목 18:00-20:00</p>
+                                <p class="text-sm text-gray-600">문법, 작문, 발표 연습</p>
+                            </div>
+                            <div class="border-l-4 border-purple-500 pl-4">
+                                <p class="font-semibold">고급반 (TOPIK 4-6급)</p>
+                                <p class="text-sm text-gray-600">토요일 10:00-13:00</p>
+                                <p class="text-sm text-gray-600">학술 한국어, 논문 작성</p>
+                            </div>
+                        </div>
+                        <button class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-colors font-semibold">
+                            수강 신청하기
+                        </button>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span class="text-2xl">💬</span>
+                            언어 교환 프로그램
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="font-semibold mb-2">버디 프로그램</p>
+                                <p class="text-sm text-gray-700">한국 학생과 1:1 매칭</p>
+                                <p class="text-sm text-gray-700">주 1회 2시간 대화 연습</p>
+                                <p class="text-sm text-green-600 font-semibold mt-2">✓ 무료 + 친구 사귀기</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <p class="font-semibold mb-2">스터디 그룹</p>
+                                <p class="text-sm text-gray-700">4-6명 소그룹 스터디</p>
+                                <p class="text-sm text-gray-700">주제별 토론 및 발표</p>
+                                <p class="text-sm text-green-600 font-semibold mt-2">✓ 다양한 국적 친구</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <p class="font-semibold mb-2">온라인 튜터링</p>
+                                <p class="text-sm text-gray-700">화상으로 1:1 개인 지도</p>
+                                <p class="text-sm text-gray-700">시간 자유롭게 조정 가능</p>
+                                <p class="text-sm text-purple-600 font-semibold mt-2">✓ 시간당 ₩20,000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="text-3xl mb-2">📱</div>
+                        <h4 class="font-bold mb-2">추천 앱</h4>
+                        <p class="text-sm text-gray-700">• Talk To Me In Korean</p>
+                        <p class="text-sm text-gray-700">• 한국어 공부 (Learn Korean)</p>
+                        <p class="text-sm text-gray-700">• Drops: 한국어</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="text-3xl mb-2">📺</div>
+                        <h4 class="font-bold mb-2">YouTube 채널</h4>
+                        <p class="text-sm text-gray-700">• Korean Unnie</p>
+                        <p class="text-sm text-gray-700">• GO! Billy Korean</p>
+                        <p class="text-sm text-gray-700">• 세종학당</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="text-3xl mb-2">📖</div>
+                        <h4 class="font-bold mb-2">교재</h4>
+                        <p class="text-sm text-gray-700">• 연세 한국어</p>
+                        <p class="text-sm text-gray-700">• 서울대 한국어</p>
+                        <p class="text-sm text-gray-700">• 이화 한국어</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+        <!-- End Tab Content: Scholarship & Learning -->
+
+        <!-- Tab Content: Life Preparation -->
+        <div id="content-life-preparation" class="tab-content hidden">
+        <!-- Part-time Jobs -->
+        <section id="parttime" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-gray-900">💼 아르바이트 정보</h2>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-xl mb-8">
+                    <h3 class="font-bold text-yellow-800 mb-2">📋 법적 규정</h3>
+                    <p class="text-yellow-800">• D-2 비자: 학기 중 주 20시간, 방학 중 제한 없음</p>
+                    <p class="text-yellow-800">• 출입국관리사무소에서 시간제취업허가 필수</p>
+                    <p class="text-yellow-800">• 최저시급: ₩9,860 (2024년 기준)</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white border rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold mb-4 text-blue-600">👍 추천 아르바이트</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <p class="font-semibold">캠퍼스 내 근로</p>
+                                <p class="text-sm text-gray-600">도서관, 행정실, 실험실 조교</p>
+                                <p class="text-sm text-green-600">₩10,000-15,000/시간</p>
+                                <p class="text-xs text-gray-500">✓ 이동 시간 없음 ✓ 학업 병행 용이</p>
+                            </div>
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <p class="font-semibold">튜터링/과외</p>
+                                <p class="text-sm text-gray-600">영어, 모국어 또는 전공 과목</p>
+                                <p class="text-sm text-blue-600">₩20,000-50,000/시간</p>
+                                <p class="text-xs text-gray-500">✓ 높은 시급 ✓ 시간 조정 가능</p>
+                            </div>
+                            <div class="border-l-4 border-purple-500 pl-4">
+                                <p class="font-semibold">번역/통역</p>
+                                <p class="text-sm text-gray-600">문서 번역, 회의 통역</p>
+                                <p class="text-sm text-purple-600">₩30,000-100,000/건</p>
+                                <p class="text-xs text-gray-500">✓ 재택 가능 ✓ 전문성 개발</p>
+                            </div>
+                            <div class="border-l-4 border-orange-500 pl-4">
+                                <p class="font-semibold">카페/식당</p>
+                                <p class="text-sm text-gray-600">서빙, 주방 보조</p>
+                                <p class="text-sm text-orange-600">₩10,000-12,000/시간 + 식사</p>
+                                <p class="text-xs text-gray-500">✓ 한국어 연습 ✓ 식사 제공</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold mb-4 text-red-600">⚠️ 주의사항</h3>
+                        <div class="space-y-3">
+                            <div class="bg-red-50 p-3 rounded-lg">
+                                <p class="font-semibold text-red-800">불법 취업 금지</p>
+                                <p class="text-sm text-red-700">• 허가 없이 일하면 강제출국</p>
+                                <p class="text-sm text-red-700">• 유흥업소 근무 절대 금지</p>
+                            </div>
+                            <div class="bg-orange-50 p-3 rounded-lg">
+                                <p class="font-semibold text-orange-800">근로계약서 필수</p>
+                                <p class="text-sm text-orange-700">• 서면 계약서 작성 및 보관</p>
+                                <p class="text-sm text-orange-700">• 급여, 근무시간 명시</p>
+                            </div>
+                            <div class="bg-yellow-50 p-3 rounded-lg">
+                                <p class="font-semibold text-yellow-800">세금 신고</p>
+                                <p class="text-sm text-yellow-700">• 소득세 원천징수 확인</p>
+                                <p class="text-sm text-yellow-700">• 연말정산으로 환급 가능</p>
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded-lg">
+                                <p class="font-semibold text-blue-800">학업 우선</p>
+                                <p class="text-sm text-blue-700">• 성적 하락 시 장학금 박탈</p>
+                                <p class="text-sm text-blue-700">• 주당 15시간 이하 권장</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-blue-50 p-6 rounded-xl">
+                    <h4 class="font-bold mb-3">🔍 구직 사이트</h4>
+                    <div class="grid md:grid-cols-4 gap-3">
+                        <div class="bg-white p-3 rounded text-center">
+                            <p class="font-semibold">알바천국</p>
+                            <p class="text-xs text-gray-600">alba.co.kr</p>
+                        </div>
+                        <div class="bg-white p-3 rounded text-center">
+                            <p class="font-semibold">알바몬</p>
+                            <p class="text-xs text-gray-600">albamon.com</p>
+                        </div>
+                        <div class="bg-white p-3 rounded text-center">
+                            <p class="font-semibold">사람인</p>
+                            <p class="text-xs text-gray-600">saramin.co.kr</p>
+                        </div>
+                        <div class="bg-white p-3 rounded text-center">
+                            <p class="font-semibold">잡코리아</p>
+                            <p class="text-xs text-gray-600">jobkorea.co.kr</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checklist -->
+        <section id="checklist" class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-gray-900">✅ 유학 준비 체크리스트</h2>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span class="text-2xl">📅</span>
+                            출국 6개월 전
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>대학 선택 및 전공 결정</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>입학 요건 확인</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>TOPIK/TOEFL 시험 준비</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>재정 계획 수립</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>추천서 의뢰 (교수님/직장 상사)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span class="text-2xl">📅</span>
+                            출국 3개월 전
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>온라인 지원서 작성 및 제출</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>필요 서류 준비 (졸업증명서, 성적증명서 등)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>서류 번역 및 공증</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>장학금 신청</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>합격 통지서 수령</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span class="text-2xl">📅</span>
+                            출국 2개월 전
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>등록금 납부</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>표준입학허가서 발급 신청</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>학생 비자 (D-2) 신청</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>기숙사 또는 숙소 신청</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>건강검진</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span class="text-2xl">📅</span>
+                            출국 1개월 전
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>항공권 예매</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>공항 픽업 서비스 신청</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>짐 준비 (의류, 약, 학용품)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>한국 문화 및 생활 정보 학습</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>긴급 연락처 저장</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-green-500">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span class="text-2xl">✈️</span>
+                            입국 후 즉시
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>오리엔테이션 참석</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>기숙사 체크인</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>휴대폰 개통</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>은행 계좌 개설</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>학생증 발급</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-orange-500">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span class="text-2xl">📋</span>
+                            입국 후 90일 이내
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span class="text-red-600 font-semibold">외국인등록증 발급 (필수!)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>건강보험 가입</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>교통카드 발급 (T-money)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>한국어 수업 등록</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5">
+                                <span>학교 시설 둘러보기</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+        <!-- End Tab Content: Life Preparation -->
+
+        <!-- CTA -->
+        <section class="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-4xl font-bold mb-4">궁금한 점이 있으신가요?</h2>
+                <p class="text-xl mb-8">AI 챗봇에게 바로 물어보세요!</p>
+                <div class="flex gap-4 justify-center flex-wrap">
+                    <button onclick="document.getElementById('chatbot-button').click()" class="px-8 py-4 bg-white hover:bg-gray-100 text-blue-900 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-xl">
+                        💬 AI 상담 시작
+                    </button>
+                    <button class="px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-xl">
+                        📧 이메일 문의
+                    </button>
+                </div>
+                <p class="mt-6 text-blue-100">📞 긴급 문의: +82-2-1234-5678 (평일 9:00-18:00)</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot (same as before) -->
+    <div id="chatbot-container"></div>
+
+    <script>
+        // 비용 계산기
+        function calculateCost() {
+            const tuition = parseInt(document.getElementById('major').value);
+            const dorm = parseInt(document.getElementById('dorm').value);
+            const living = parseInt(document.getElementById('living').value);
+            const books = parseInt(document.getElementById('books').value);
+
+            document.getElementById('tuition-total').textContent = `₩${(tuition * 2).toLocaleString()}`;
+            document.getElementById('dorm-total').textContent = `₩${(dorm * 12).toLocaleString()}`;
+            document.getElementById('living-total').textContent = `₩${(living * 12).toLocaleString()}`;
+            document.getElementById('books-total').textContent = `₩${(books * 2).toLocaleString()}`;
+
+            const total = (tuition * 2) + (dorm * 12) + (living * 12) + (books * 2) + 1200000 + 1000000;
+            document.getElementById('total-cost').textContent = `₩${total.toLocaleString()}`;
+        }
+
+        // 다국어 전환
+        function changeLanguage(lang) {
+            // 모든 언어 버튼에서 active 클래스 제거
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // 선택된 버튼에 active 클래스 추가
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+
+            // 실제로는 여기서 페이지 콘텐츠를 해당 언어로 변경
+            alert(`언어가 ${lang}로 변경됩니다. (실제 구현 시 모든 텍스트가 변경됩니다)`);
+        }
+
+        // 챗봇 응답 데이터
+        const responses = {
+            'admissions': '입학 절차는 다음과 같습니다:\n\n1. 온라인 지원서 작성\n2. 필요 서류 제출 (성적증명서, 졸업증명서, 추천서)\n3. 서류 심사\n4. 합격 통지\n5. 등록금 납부\n6. 비자 신청\n\n자세한 내용은 입학 안내 페이지를 확인해주세요.',
+            'scholarships': '경국대학교는 다양한 장학금을 제공합니다:\n\n🏆 성적우수 장학금: 등록금의 50-100%\n🌏 국가별 특별 장학금: 등록금의 30-50%\n💼 근로 장학금: 월 50-100만원\n📚 학업 장려 장학금: 학기당 200-500만원\n\n자세한 정보는 장학금 페이지에서 확인하세요.',
+            'programs': '인기 프로그램:\n\n🎓 학부 (4년)\n• 경영학\n• 컴퓨터공학\n• 국제관계학\n• 한국학\n\n📚 대학원 (2-3년)\n• MBA\n• 공학석사\n• 국제학석사\n\n수업 언어: 한국어 또는 영어',
+            'visa': '학생 비자(D-2) 신청 절차:\n\n1. 입학 허가서 발급\n2. 표준입학허가서 발급\n3. 본국 한국 대사관/영사관 방문\n4. 비자 신청 및 인터뷰\n5. 비자 발급 (약 2주 소요)\n\n입국 후 90일 이내 외국인등록증을 발급받으셔야 합니다.',
+            'campus': '캠퍼스 생활 정보:\n\n🏠 기숙사: 1인실/2인실/4인실 선택 가능\n🍽️ 식당: 한식, 양식, 할랄 식당 운영\n📚 도서관: 24시간 개방\n💪 체육관: 최신 시설 완비\n🎭 동아리: 100개 이상\n\n국제 학생 전용 라운지와 기도실도 있습니다.'
+        };
+
+        const quickReplies = {
+            'admissions': '입학 절차',
+            'scholarships': '장학금 정보',
+            'programs': '프로그램 안내',
+            'visa': '비자 정보',
+            'campus': '캠퍼스 생활'
+        };
+
+        function findResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            if (lowerMessage.includes('입학') || lowerMessage.includes('지원') || lowerMessage.includes('신청')) {
+                return responses.admissions;
+            }
+            if (lowerMessage.includes('장학금') || lowerMessage.includes('학비') || lowerMessage.includes('비용') || lowerMessage.includes('돈')) {
+                return responses.scholarships;
+            }
+            if (lowerMessage.includes('프로그램') || lowerMessage.includes('전공') || lowerMessage.includes('학과') || lowerMessage.includes('과정')) {
+                return responses.programs;
+            }
+            if (lowerMessage.includes('비자') || lowerMessage.includes('이민')) {
+                return responses.visa;
+            }
+            if (lowerMessage.includes('캠퍼스') || lowerMessage.includes('생활') || lowerMessage.includes('기숙사') || lowerMessage.includes('시설')) {
+                return responses.campus;
+            }
+            return '죄송합니다. 정확한 답변을 찾지 못했습니다.\n\n자주 묻는 질문:\n• 입학 절차\n• 장학금 정보\n• 프로그램 안내\n• 비자 정보\n• 캠퍼스 생활\n\n더 자세한 상담이 필요하시면 global@kku.ac.kr로 문의해주세요.';
+        }
+
+        let isOpen = false;
+        let isMinimized = false;
+
+        function initChatbot() {
+            const container = document.getElementById('chatbot-container');
+
+            // 플로팅 버튼
+            const floatingButton = document.createElement('button');
+            floatingButton.id = 'chatbot-button';
+            floatingButton.className = 'fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full shadow-2xl flex items-center justify-center text-white z-50 hover:scale-110 transition-transform';
+            floatingButton.innerHTML = `
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+                <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-pulse"></span>
+            `;
+            floatingButton.onclick = openChatbot;
+            container.appendChild(floatingButton);
+
+            // 채팅창 (이전과 동일)
+            const chatWindow = document.createElement('div');
+            chatWindow.id = 'chat-window';
+            chatWindow.className = 'fixed bottom-6 right-6 w-96 bg-white rounded-2xl shadow-2xl z-50 flex-col overflow-hidden hidden';
+            chatWindow.style.height = '600px';
+            chatWindow.innerHTML = `
+                <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-4 text-white flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">AI 입학 상담</h3>
+                            <p class="text-xs text-blue-100">궁금한 점을 물어보세요</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="minimizeChatbot()" class="hover:bg-white/20 p-1 rounded transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                            </svg>
+                        </button>
+                        <button onclick="closeChatbot()" class="hover:bg-white/20 p-1 rounded transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50" style="height: calc(100% - 200px);"></div>
+                <div id="quick-replies" class="px-4 py-2 bg-white border-t flex gap-2 flex-wrap"></div>
+                <div class="p-4 bg-white border-t">
+                    <div class="flex gap-2">
+                        <input
+                            type="text"
+                            id="chat-input"
+                            placeholder="메시지를 입력하세요..."
+                            class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            onkeypress="handleKeyPress(event)"
+                        />
+                        <button onclick="sendMessage()" class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(chatWindow);
+
+            addMessage('안녕하세요! 경국대학교 AI 입학 상담입니다. 무엇을 도와드릴까요?', true);
+            showQuickReplies();
+        }
+
+        function openChatbot() {
+            isOpen = true;
+            document.getElementById('chatbot-button').style.display = 'none';
+            document.getElementById('chat-window').style.display = 'flex';
+        }
+
+        function closeChatbot() {
+            isOpen = false;
+            document.getElementById('chatbot-button').style.display = 'flex';
+            document.getElementById('chat-window').style.display = 'none';
+        }
+
+        function minimizeChatbot() {
+            isMinimized = !isMinimized;
+            const chatWindow = document.getElementById('chat-window');
+            chatWindow.style.height = isMinimized ? '60px' : '600px';
+        }
+
+        function addMessage(text, isBot) {
+            const messagesDiv = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex ${isBot ? 'justify-start' : 'justify-end'} chat-message`;
+            const time = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+            messageDiv.innerHTML = `
+                <div class="max-w-[80%] rounded-2xl px-4 py-2 ${isBot ? 'bg-white text-gray-800 shadow-md' : 'bg-blue-600 text-white'}">
+                    <p class="text-sm whitespace-pre-line">${text}</p>
+                    <p class="text-xs mt-1 opacity-60">${time}</p>
+                </div>
+            `;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function showTyping() {
+            const messagesDiv = document.getElementById('chat-messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typing-indicator';
+            typingDiv.className = 'flex justify-start';
+            typingDiv.innerHTML = `
+                <div class="bg-white rounded-2xl px-4 py-3 shadow-md">
+                    <div class="flex gap-1">
+                        <span class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></span>
+                        <span class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></span>
+                        <span class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></span>
+                    </div>
+                </div>
+            `;
+            messagesDiv.appendChild(typingDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function hideTyping() {
+            const typingDiv = document.getElementById('typing-indicator');
+            if (typingDiv) typingDiv.remove();
+        }
+
+        function showQuickReplies() {
+            const quickRepliesDiv = document.getElementById('quick-replies');
+            quickRepliesDiv.innerHTML = '';
+            Object.entries(quickReplies).forEach(([key, label]) => {
+                const button = document.createElement('button');
+                button.className = 'px-3 py-1 text-sm bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-full transition-colors';
+                button.textContent = label;
+                button.onclick = () => handleQuickReply(key, label);
+                quickRepliesDiv.appendChild(button);
+            });
+        }
+
+        function handleQuickReply(key, label) {
+            document.getElementById('quick-replies').innerHTML = '';
+            addMessage(label, false);
+            setTimeout(() => {
+                showTyping();
+                setTimeout(() => {
+                    hideTyping();
+                    addMessage(responses[key], true);
+                }, 1000);
+            }, 500);
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (!message) return;
+            addMessage(message, false);
+            input.value = '';
+            document.getElementById('quick-replies').innerHTML = '';
+            showTyping();
+            setTimeout(() => {
+                hideTyping();
+                const response = findResponse(message);
+                addMessage(response, true);
+            }, 1000 + Math.random() * 1000);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Progress Tracking System
+        const progressData = {
+            currentStage: 1,
+            stages: {
+                1: {
+                    title: '1단계: 준비 시작 (6개월 전)',
+                    tasks: [
+                        { id: 1, text: '대학 선택 및 전공 결정', completed: false, deadline: '6개월 전' },
+                        { id: 2, text: '입학 요건 확인 및 준비', completed: false, deadline: '6개월 전' },
+                        { id: 3, text: 'TOPIK/TOEFL 시험 준비 시작', completed: false, deadline: '5개월 전' },
+                        { id: 4, text: '재정 계획 수립 (학비, 생활비)', completed: false, deadline: '6개월 전' },
+                        { id: 5, text: '추천서 의뢰 (교수님/직장 상사)', completed: false, deadline: '5개월 전' },
+                        { id: 6, text: '자기소개서 초안 작성', completed: false, deadline: '4개월 전' }
+                    ],
+                    nextStepText: '모든 준비가 완료되면 온라인 지원서를 작성하세요.',
+                    deadlines: [
+                        { text: 'TOPIK/TOEFL 시험 등록', date: '5개월 전', urgent: false },
+                        { text: '추천서 의뢰 마감', date: '5개월 전', urgent: false }
+                    ]
+                },
+                2: {
+                    title: '2단계: 지원서 제출 (3개월 전)',
+                    tasks: [
+                        { id: 7, text: '온라인 지원서 작성 및 제출', completed: false, deadline: '3월/9월' },
+                        { id: 8, text: '고등학교 졸업증명서 준비 (영문)', completed: false, deadline: '제출 2주 전' },
+                        { id: 9, text: '고등학교 성적증명서 준비', completed: false, deadline: '제출 2주 전' },
+                        { id: 10, text: '여권 사본 준비', completed: false, deadline: '제출 2주 전' },
+                        { id: 11, text: '영어/한국어 능력 증명서 제출', completed: false, deadline: '제출 2주 전' },
+                        { id: 12, text: '추천서 2부 제출', completed: false, deadline: '제출 2주 전' },
+                        { id: 13, text: '자기소개서 최종본 제출', completed: false, deadline: '제출 2주 전' },
+                        { id: 14, text: '재정증명서 준비 (₩20,000,000+)', completed: false, deadline: '제출 2주 전' },
+                        { id: 15, text: '장학금 신청서 제출', completed: false, deadline: '지원 마감일' }
+                    ],
+                    nextStepText: '서류 심사를 기다리는 동안 비자 준비를 시작하세요.',
+                    deadlines: [
+                        { text: '온라인 지원서 마감', date: '3월 31일 / 9월 30일', urgent: true },
+                        { text: '서류 제출 마감', date: '지원 후 2주', urgent: true },
+                        { text: '장학금 신청 마감', date: '지원 마감일', urgent: true }
+                    ]
+                },
+                3: {
+                    title: '3단계: 입학 처리 (2개월 전)',
+                    tasks: [
+                        { id: 16, text: '합격 통지서 수령 확인', completed: false, deadline: '4월/10월' },
+                        { id: 17, text: '입학금 납부 (₩1,000,000)', completed: false, deadline: '합격 후 2주' },
+                        { id: 18, text: '1학기 등록금 납부', completed: false, deadline: '합격 후 2주' },
+                        { id: 19, text: '표준입학허가서 발급 신청', completed: false, deadline: '2개월 전' },
+                        { id: 20, text: '기숙사 또는 숙소 신청', completed: false, deadline: '2개월 전' },
+                        { id: 21, text: '건강검진 완료', completed: false, deadline: '2개월 전' }
+                    ],
+                    nextStepText: '표준입학허가서를 받으면 즉시 비자 신청을 시작하세요.',
+                    deadlines: [
+                        { text: '등록금 납부 마감', date: '합격 후 2주', urgent: true },
+                        { text: '기숙사 신청 마감', date: '2개월 전', urgent: false },
+                        { text: '건강검진', date: '2개월 전', urgent: false }
+                    ]
+                },
+                4: {
+                    title: '4단계: 출국 준비 (1개월 전)',
+                    tasks: [
+                        { id: 22, text: '학생 비자 (D-2) 신청 및 발급', completed: false, deadline: '2개월 전' },
+                        { id: 23, text: '항공권 예매', completed: false, deadline: '1개월 전' },
+                        { id: 24, text: '공항 픽업 서비스 신청', completed: false, deadline: '1개월 전' },
+                        { id: 25, text: '짐 준비 (의류, 약, 학용품)', completed: false, deadline: '출국 1주 전' },
+                        { id: 26, text: '한국 문화 및 생활 정보 학습', completed: false, deadline: '1개월 전' },
+                        { id: 27, text: '긴급 연락처 저장', completed: false, deadline: '출국 전' },
+                        { id: 28, text: '여행자 보험 가입', completed: false, deadline: '출국 1주 전' }
+                    ],
+                    nextStepText: '모든 준비가 완료되면 한국으로 출발하세요!',
+                    deadlines: [
+                        { text: '비자 발급', date: '출국 2-4주 전', urgent: true },
+                        { text: '항공권 예매', date: '1개월 전', urgent: false },
+                        { text: '여행자 보험', date: '출국 1주 전', urgent: false }
+                    ]
+                },
+                5: {
+                    title: '5단계: 한국 생활 시작 (입국 후)',
+                    tasks: [
+                        { id: 29, text: '오리엔테이션 참석', completed: false, deadline: '입국 후 즉시' },
+                        { id: 30, text: '기숙사 체크인', completed: false, deadline: '입국 후 즉시' },
+                        { id: 31, text: '휴대폰 개통', completed: false, deadline: '입국 후 1주' },
+                        { id: 32, text: '은행 계좌 개설', completed: false, deadline: '입국 후 1주' },
+                        { id: 33, text: '학생증 발급', completed: false, deadline: '입국 후 1주' },
+                        { id: 34, text: '외국인등록증 발급 (필수!)', completed: false, deadline: '입국 후 90일 이내' },
+                        { id: 35, text: '건강보험 가입', completed: false, deadline: '입국 후 90일 이내' },
+                        { id: 36, text: '교통카드 발급 (T-money)', completed: false, deadline: '입국 후 1주' },
+                        { id: 37, text: '한국어 수업 등록', completed: false, deadline: '입국 후 1개월' }
+                    ],
+                    nextStepText: '축하합니다! 한국에서의 새로운 학업 생활을 시작하세요!',
+                    deadlines: [
+                        { text: '외국인등록증 발급', date: '입국 후 90일 이내', urgent: true },
+                        { text: '건강보험 가입', date: '입국 후 90일 이내', urgent: true },
+                        { text: '은행 계좌 개설', date: '입국 후 1주', urgent: false }
+                    ]
+                }
+            }
+        };
+
+        // Load progress from localStorage
+        function loadProgress() {
+            const saved = localStorage.getItem('kkuProgress');
+            if (saved) {
+                const savedData = JSON.parse(saved);
+                progressData.currentStage = savedData.currentStage || 1;
+                // Restore task completion status
+                if (savedData.taskStatus) {
+                    Object.keys(progressData.stages).forEach(stage => {
+                        progressData.stages[stage].tasks.forEach(task => {
+                            if (savedData.taskStatus[task.id] !== undefined) {
+                                task.completed = savedData.taskStatus[task.id];
+                            }
+                        });
+                    });
+                }
+            }
+            updateProgressUI();
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            const taskStatus = {};
+            Object.keys(progressData.stages).forEach(stage => {
+                progressData.stages[stage].tasks.forEach(task => {
+                    taskStatus[task.id] = task.completed;
+                });
+            });
+            localStorage.setItem('kkuProgress', JSON.stringify({
+                currentStage: progressData.currentStage,
+                taskStatus: taskStatus
+            }));
+        }
+
+        // Set current stage
+        function setStage(stageNum) {
+            progressData.currentStage = stageNum;
+            saveProgress();
+            updateProgressUI();
+
+            // Smooth scroll to task list
+            document.getElementById('task-list').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Toggle task completion
+        function toggleTask(taskId) {
+            Object.keys(progressData.stages).forEach(stage => {
+                progressData.stages[stage].tasks.forEach(task => {
+                    if (task.id === taskId) {
+                        task.completed = !task.completed;
+                    }
+                });
+            });
+            saveProgress();
+            updateProgressUI();
+        }
+
+        // Reset all progress
+        function resetProgress() {
+            if (confirm('정말로 모든 진행 상황을 초기화하시겠습니까?')) {
+                localStorage.removeItem('kkuProgress');
+                progressData.currentStage = 1;
+                Object.keys(progressData.stages).forEach(stage => {
+                    progressData.stages[stage].tasks.forEach(task => {
+                        task.completed = false;
+                    });
+                });
+                updateProgressUI();
+            }
+        }
+
+        // Calculate overall progress
+        function calculateOverallProgress() {
+            let totalTasks = 0;
+            let completedTasks = 0;
+            Object.keys(progressData.stages).forEach(stage => {
+                progressData.stages[stage].tasks.forEach(task => {
+                    totalTasks++;
+                    if (task.completed) completedTasks++;
+                });
+            });
+            return { total: totalTasks, completed: completedTasks, percentage: Math.round((completedTasks / totalTasks) * 100) };
+        }
+
+        // Calculate stage statistics
+        function calculateStageStats() {
+            const currentTasks = progressData.stages[progressData.currentStage].tasks;
+            const total = currentTasks.length;
+            const completed = currentTasks.filter(t => t.completed).length;
+            const remaining = total - completed;
+            return { total, completed, remaining, percentage: Math.round((completed / total) * 100) };
+        }
+
+        // Update all UI elements
+        function updateProgressUI() {
+            const currentStage = progressData.currentStage;
+            const stageData = progressData.stages[currentStage];
+
+            // Update stage stepper
+            for (let i = 1; i <= 5; i++) {
+                const stageEl = document.getElementById(`stage-${i}`);
+                const circle = stageEl.querySelector('.stage-circle');
+                const label = stageEl.querySelector('.stage-label');
+                const lines = document.querySelectorAll('.stage-line');
+
+                if (i < currentStage) {
+                    // Completed stages
+                    circle.className = 'w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-2 stage-circle bg-green-500 text-white';
+                    label.className = 'text-sm text-center font-medium stage-label text-green-600';
+                } else if (i === currentStage) {
+                    // Current stage
+                    circle.className = 'w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-2 stage-circle bg-blue-600 text-white ring-4 ring-blue-300';
+                    label.className = 'text-sm text-center font-medium stage-label text-blue-600 font-bold';
+                } else {
+                    // Upcoming stages
+                    circle.className = 'w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-2 stage-circle bg-gray-200 text-gray-500';
+                    label.className = 'text-sm text-center font-medium stage-label text-gray-500';
+                }
+            }
+
+            // Update progress lines
+            document.querySelectorAll('.stage-line').forEach((line, index) => {
+                if (index < currentStage - 1) {
+                    line.className = 'flex-1 h-1 mx-2 stage-line bg-green-500';
+                } else {
+                    line.className = 'flex-1 h-1 mx-2 stage-line bg-gray-200';
+                }
+            });
+
+            // Update overall progress
+            const overallProgress = calculateOverallProgress();
+            document.getElementById('overall-progress-text').textContent = `${overallProgress.percentage}%`;
+            document.getElementById('overall-progress-bar').style.width = `${overallProgress.percentage}%`;
+
+            // Update stage title
+            document.getElementById('current-stage-title').textContent = stageData.title;
+
+            // Update task list
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = '';
+            stageData.tasks.forEach(task => {
+                const taskEl = document.createElement('label');
+                taskEl.className = `flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition-all ${task.completed ? 'bg-green-50' : ''}`;
+                taskEl.innerHTML = `
+                    <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleTask(${task.id})" class="w-5 h-5 mt-0.5 cursor-pointer">
+                    <div class="flex-1">
+                        <span class="${task.completed ? 'line-through text-gray-500' : ''}">${task.text}</span>
+                        <div class="text-xs text-gray-500 mt-1">📅 ${task.deadline}</div>
+                    </div>
+                    ${task.completed ? '<span class="text-green-500 font-bold">✓</span>' : ''}
+                `;
+                taskList.appendChild(taskEl);
+            });
+
+            // Update next step text
+            document.getElementById('next-step-text').textContent = stageData.nextStepText;
+
+            // Update statistics
+            const stats = calculateStageStats();
+            document.getElementById('completed-count').textContent = `${stats.completed}/${stats.total}`;
+            document.getElementById('completed-bar').style.width = `${stats.percentage}%`;
+            document.getElementById('inprogress-count').textContent = '0'; // Would need more complex logic
+            document.getElementById('remaining-count').textContent = stats.remaining;
+
+            // Update deadlines
+            const deadlinesList = document.getElementById('deadlines-list');
+            deadlinesList.innerHTML = '';
+            stageData.deadlines.forEach(deadline => {
+                const deadlineEl = document.createElement('div');
+                deadlineEl.className = `flex items-start gap-3 p-3 rounded-lg ${deadline.urgent ? 'bg-red-100 border-l-4 border-red-500' : 'bg-orange-100 border-l-4 border-orange-500'}`;
+                deadlineEl.innerHTML = `
+                    <span class="text-xl">${deadline.urgent ? '🚨' : '⏰'}</span>
+                    <div class="flex-1">
+                        <p class="font-semibold text-sm ${deadline.urgent ? 'text-red-800' : 'text-orange-800'}">${deadline.text}</p>
+                        <p class="text-xs ${deadline.urgent ? 'text-red-600' : 'text-orange-600'}">${deadline.date}</p>
+                    </div>
+                `;
+                deadlinesList.appendChild(deadlineEl);
+            });
+        }
+
+        // Initialize progress tracking on page load
+        function initProgressTracking() {
+            loadProgress();
+
+            // Auto-advance to next stage if current stage is completed
+            const stats = calculateStageStats();
+            if (stats.completed === stats.total && progressData.currentStage < 5) {
+                // Show congratulations message
+                setTimeout(() => {
+                    if (confirm(`축하합니다! ${progressData.stages[progressData.currentStage].title}을(를) 완료했습니다.\n\n다음 단계로 이동하시겠습니까?`)) {
+                        setStage(progressData.currentStage + 1);
+                    }
+                }, 500);
+            }
+        }
+
+        // Tab Switching System
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab content
+            const selectedContent = document.getElementById('content-' + tabName);
+            if (selectedContent) {
+                selectedContent.classList.remove('hidden');
+            }
+
+            // Add active class to selected tab button
+            const selectedBtn = document.getElementById('tab-' + tabName);
+            if (selectedBtn) {
+                selectedBtn.classList.add('active');
+            }
+
+            // Save current tab to localStorage
+            localStorage.setItem('currentTab', tabName);
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Load saved tab on page load
+        function loadSavedTab() {
+            const savedTab = localStorage.getItem('currentTab') || 'progress';
+            switchTab(savedTab);
+        }
+
+        window.onload = function() {
+            initChatbot();
+            initProgressTracking();
+            loadSavedTab();
+        };
+    </script>
+</body>
+</html>

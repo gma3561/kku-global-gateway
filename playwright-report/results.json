@@ -1,0 +1,180 @@
+{
+  "config": {
+    "configFile": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/playwright.config.ts",
+    "rootDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 5,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "i18n-layout.spec.ts",
+      "file": "i18n-layout.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "다국어 및 레이아웃 테스트",
+          "file": "i18n-layout.spec.ts",
+          "line": 49,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "한국어 (ko) 테스트",
+              "file": "i18n-layout.spec.ts",
+              "line": 53,
+              "column": 10,
+              "specs": [
+                {
+                  "title": "desktop - 페이지 로드 및 번역 확인",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "failed",
+                          "duration": 6299,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/KKU Global Gateway|경국대학교/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"\"\u001b[22m\n",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/KKU Global Gateway|경국대학교/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"\"\u001b[22m\n\n    at /Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/i18n-layout.spec.ts:74:30",
+                            "location": {
+                              "file": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/i18n-layout.spec.ts",
+                              "column": 30,
+                              "line": 74
+                            },
+                            "snippet": "  72 |\n  73 |           // 페이지 타이틀 확인\n> 74 |           await expect(page).toHaveTitle(/KKU Global Gateway|경국대학교/);\n     |                              ^\n  75 |\n  76 |           // Hero 섹션이 표시되는지 확인\n  77 |           const heroSection = page.locator('section').first();"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/i18n-layout.spec.ts",
+                                "column": 30,
+                                "line": 74
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/KKU Global Gateway|경국대학교/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"\"\u001b[22m\n\n\n  72 |\n  73 |           // 페이지 타이틀 확인\n> 74 |           await expect(page).toHaveTitle(/KKU Global Gateway|경국대학교/);\n     |                              ^\n  75 |\n  76 |           // Hero 섹션이 표시되는지 확인\n  77 |           const heroSection = page.locator('section').first();\n    at /Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/i18n-layout.spec.ts:74:30"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-10-28T14:56:09.829Z",
+                          "annotations": [],
+                          "attachments": [
+                            {
+                              "name": "screenshot",
+                              "contentType": "image/png",
+                              "path": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results/i18n-layout-다국어-및-레이아웃-테스트-2b022-스트-desktop---페이지-로드-및-번역-확인-chromium/test-failed-1.png"
+                            },
+                            {
+                              "name": "video",
+                              "contentType": "video/webm",
+                              "path": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results/i18n-layout-다국어-및-레이아웃-테스트-2b022-스트-desktop---페이지-로드-및-번역-확인-chromium/video.webm"
+                            },
+                            {
+                              "name": "error-context",
+                              "contentType": "text/markdown",
+                              "path": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results/i18n-layout-다국어-및-레이아웃-테스트-2b022-스트-desktop---페이지-로드-및-번역-확인-chromium/error-context.md"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/i18n-layout.spec.ts",
+                            "column": 30,
+                            "line": 74
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "fdd05bf1aeaaf04d7caa-cde2498c3f1f76e2ded5",
+                  "file": "i18n-layout.spec.ts",
+                  "line": 57,
+                  "column": 13
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2025-10-28T14:56:09.147Z",
+    "duration": 7387.86,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
