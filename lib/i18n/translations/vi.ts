@@ -1,6 +1,4 @@
-import { Translation } from './ko';
-
-export const vi: Translation = {
+export const vi = {
   common: {
     welcome: 'Chào mừng',
     home: 'Trang chủ',

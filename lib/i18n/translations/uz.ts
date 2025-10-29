@@ -1,6 +1,4 @@
-import { Translation } from './ko';
-
-export const uz: Translation = {
+export const uz = {
   common: {
     welcome: 'Xush kelibsiz',
     home: 'Bosh sahifa',

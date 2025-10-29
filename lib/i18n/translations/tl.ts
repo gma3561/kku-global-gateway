@@ -1,6 +1,4 @@
-import { Translation } from './ko';
-
-export const tl: Translation = {
+export const tl = {
   common: {
     welcome: 'Maligayang pagdating',
     home: 'Home',
