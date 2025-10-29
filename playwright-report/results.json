@@ -10,7 +10,9 @@
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
-    "metadata": {},
+    "metadata": {
+      "actualWorkers": 1
+    },
     "preserveOutput": "always",
     "reporter": [
       [
@@ -40,7 +42,9 @@
         "outputDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "chromium",
         "name": "chromium",
         "testDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests",
@@ -54,7 +58,9 @@
         "outputDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "firefox",
         "name": "firefox",
         "testDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests",
@@ -68,7 +74,9 @@
         "outputDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "webkit",
         "name": "webkit",
         "testDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests",
@@ -82,7 +90,9 @@
         "outputDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "Mobile Chrome",
         "name": "Mobile Chrome",
         "testDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests",
@@ -96,7 +106,9 @@
         "outputDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "Mobile Safari",
         "name": "Mobile Safari",
         "testDir": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests",
@@ -114,24 +126,339 @@
     "workers": 5,
     "webServer": {
       "command": "npm run dev",
-      "url": "http://localhost:3000",
+      "url": "http://localhost:3001",
       "reuseExistingServer": true,
       "timeout": 120000
     }
   },
-  "suites": [],
-  "errors": [
+  "suites": [
     {
-      "message": "Error: Process from config.webServer was not able to start. Exit code: 1",
-      "stack": "Error: Process from config.webServer was not able to start. Exit code: 1"
+      "title": "functional-test.spec.js",
+      "file": "functional-test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "KKU Global Gateway Tests",
+          "file": "functional-test.spec.js",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "홈페이지 로드 및 기본 요소 확인",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 663,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✓ 홈페이지 로드 성공\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-29T02:04:51.523Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "034659621e15fb099a85-3690f0264270c12bb1b0",
+              "file": "functional-test.spec.js",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "10개 언어 전환 테스트",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 30125,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/functional-test.spec.js",
+                            "column": 18,
+                            "line": 38
+                          },
+                          "message": "Error: page.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[aria-label=\"Select Language\"]')\u001b[22m\n\n\n  36 |\n  37 |       // 언어 선택기 열기\n> 38 |       await page.click('button[aria-label=\"Select Language\"]');\n     |                  ^\n  39 |       await page.waitForTimeout(500);\n  40 |\n  41 |       // 해당 언어 클릭\n    at /Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/functional-test.spec.js:38:18"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Testing language: 한국어\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-29T02:04:52.436Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results/functional-test-KKU-Global-Gateway-Tests-10개-언어-전환-테스트-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results/functional-test-KKU-Global-Gateway-Tests-10개-언어-전환-테스트-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results/functional-test-KKU-Global-Gateway-Tests-10개-언어-전환-테스트-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "034659621e15fb099a85-f044b02ca9c4bd2f0421",
+              "file": "functional-test.spec.js",
+              "line": 18,
+              "column": 3
+            },
+            {
+              "title": "생활비 계산기 기능 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1032,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Found 6 number inputs\n"
+                        },
+                        {
+                          "text": "✓ 생활비 계산기 작동 확인\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-29T02:05:23.123Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "034659621e15fb099a85-56137ae5ef35f0160577",
+              "file": "functional-test.spec.js",
+              "line": 52,
+              "column": 3
+            },
+            {
+              "title": "진행 상황 트래커 기능 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 366,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Found 0 checkboxes\n"
+                        },
+                        {
+                          "text": "✓ 진행 상황 트래커 작동 확인\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-29T02:05:24.269Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "034659621e15fb099a85-f6551f9e646a03630948",
+              "file": "functional-test.spec.js",
+              "line": 77,
+              "column": 3
+            },
+            {
+              "title": "빠른 접근 도구 확인",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 388,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=곧 출시')\nExpected: visible\nError: strict mode violation: locator('text=곧 출시') resolved to 6 elements:\n    1) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').first()\n    2) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(1)\n    3) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(2)\n    4) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(3)\n    5) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(4)\n    6) <div class=\"inline-block px-4 py-2 bg-yellow-400 text-yellow-900 rounded-full mb-4 font-bold\">…</div> aka getByText('🚀 곧 출시 예정')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=곧 출시')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=곧 출시')\nExpected: visible\nError: strict mode violation: locator('text=곧 출시') resolved to 6 elements:\n    1) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').first()\n    2) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(1)\n    3) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(2)\n    4) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(3)\n    5) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(4)\n    6) <div class=\"inline-block px-4 py-2 bg-yellow-400 text-yellow-900 rounded-full mb-4 font-bold\">…</div> aka getByText('🚀 곧 출시 예정')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=곧 출시')\u001b[22m\n\n    at /Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/functional-test.spec.js:110:45",
+                        "location": {
+                          "file": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/functional-test.spec.js",
+                          "column": 45,
+                          "line": 110
+                        },
+                        "snippet": "  108 |\n  109 |     // Coming Soon 배지 확인\n> 110 |     await expect(page.locator('text=곧 출시')).toBeVisible();\n      |                                             ^\n  111 |\n  112 |     console.log('✓ 빠른 접근 도구 표시 확인');\n  113 |   });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/functional-test.spec.js",
+                            "column": 45,
+                            "line": 110
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=곧 출시')\nExpected: visible\nError: strict mode violation: locator('text=곧 출시') resolved to 6 elements:\n    1) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').first()\n    2) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(1)\n    3) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(2)\n    4) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(3)\n    5) <span class=\"px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full\">곧 출시</span> aka getByText('곧 출시').nth(4)\n    6) <div class=\"inline-block px-4 py-2 bg-yellow-400 text-yellow-900 rounded-full mb-4 font-bold\">…</div> aka getByText('🚀 곧 출시 예정')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=곧 출시')\u001b[22m\n\n\n  108 |\n  109 |     // Coming Soon 배지 확인\n> 110 |     await expect(page.locator('text=곧 출시')).toBeVisible();\n      |                                             ^\n  111 |\n  112 |     console.log('✓ 빠른 접근 도구 표시 확인');\n  113 |   });\n    at /Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/functional-test.spec.js:110:45"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-29T02:05:24.643Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results/functional-test-KKU-Global-Gateway-Tests-빠른-접근-도구-확인-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results/functional-test-KKU-Global-Gateway-Tests-빠른-접근-도구-확인-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/test-results/functional-test-KKU-Global-Gateway-Tests-빠른-접근-도구-확인-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/hasanghyeon/edu_KKU/kku-global-gateway/tests/functional-test.spec.js",
+                        "column": 45,
+                        "line": 110
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "034659621e15fb099a85-1e38ea6dddc61b94da29",
+              "file": "functional-test.spec.js",
+              "line": 103,
+              "column": 3
+            },
+            {
+              "title": "반응형 디자인 테스트",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 841,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✓ 반응형 디자인 확인\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-29T02:05:25.547Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "034659621e15fb099a85-8fe78c1ccd8196328042",
+              "file": "functional-test.spec.js",
+              "line": 115,
+              "column": 3
+            }
+          ]
+        }
+      ]
     }
   ],
+  "errors": [],
   "stats": {
-    "startTime": "2025-10-28T17:36:54.583Z",
-    "duration": 2649.5409999999997,
-    "expected": 0,
+    "startTime": "2025-10-29T02:04:50.745Z",
+    "duration": 35786.664,
+    "expected": 4,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 2,
     "flaky": 0
   }
 }
