@@ -11,13 +11,12 @@
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
     "test:report": "playwright show-report playwright-report",
-    "deploy": "npm run build && touch out/.nojekyll && git add -A && git commit -m 'Deploy to GitHub Pages' && git push origin main"
+    "deploy": "npm run build && touch out/.nojekyll && npx gh-pages -d out"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "framer-motion": "^12.23.24",
     "lightningcss": "^1.30.2",
-    "lightningcss-darwin-x64": "^1.30.2",
     "lucide-react": "^0.548.0",
     "next": "16.0.0",
     "next-intl": "^4.4.0",
@@ -35,6 +34,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
