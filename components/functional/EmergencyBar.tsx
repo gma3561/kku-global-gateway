@@ -1,12 +1,17 @@
 'use client';
 
 import { Phone, MessageCircle, AlertCircle } from 'lucide-react';
+import { useLanguageStore } from '@/lib/store/languageStore';
+import { getTranslation } from '@/lib/i18n/translations';
 
 interface EmergencyBarProps {
   t: any;
 }
 
-export default function EmergencyBar({ t }: EmergencyBarProps) {
+export default function EmergencyBar({ t: _t }: EmergencyBarProps) {
+  // Use language store instead of props for client-side language switching
+  const { currentLocale } = useLanguageStore();
+  const t = getTranslation(currentLocale);
   const emergencyContacts = [
     {
       name: t.emergency?.contacts?.campus || 'Campus Security',

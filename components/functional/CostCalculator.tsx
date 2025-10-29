@@ -2,12 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { Calculator, Home, Utensils, Bus, BookOpen, Heart } from 'lucide-react';
+import { useLanguageStore } from '@/lib/store/languageStore';
+import { getTranslation } from '@/lib/i18n/translations';
 
 interface CostCalculatorProps {
   t: any;
 }
 
-export default function CostCalculator({ t }: CostCalculatorProps) {
+export default function CostCalculator({ t: _t }: CostCalculatorProps) {
+  // Use language store instead of props for client-side language switching
+  const { currentLocale } = useLanguageStore();
+  const t = getTranslation(currentLocale);
   const [tuition, setTuition] = useState(3000000);
   const [housing, setHousing] = useState(400000);
   const [food, setFood] = useState(300000);

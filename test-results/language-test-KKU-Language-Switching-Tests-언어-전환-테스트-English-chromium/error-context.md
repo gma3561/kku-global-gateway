@@ -220,231 +220,235 @@
                   - generic [ref=e290]: 기타 비용 (월)
                   - generic [ref=e291]: 17%
             - paragraph [ref=e295]: "💡 팁: 이 금액은 예상 비용입니다. 실제 지출은 생활 방식과 지역에 따라 다를 수 있습니다."
-      - generic [ref=e297]:
-        - generic [ref=e298]:
-          - generic [ref=e299]:
-            - heading "입국 준비 진행 상황" [level=2] [ref=e300]
-            - paragraph [ref=e301]: 단계별로 준비 과정을 추적하세요
-          - button "진행 상황 초기화" [ref=e302]
-        - generic [ref=e303]:
-          - generic [ref=e304]:
-            - generic [ref=e305]: 전체 진행률
-            - generic [ref=e306]: 0%
-          - generic [ref=e309]: 0 / 12 개 작업 완료
-        - generic [ref=e310]:
-          - generic [ref=e311]:
-            - generic [ref=e312]:
-              - generic [ref=e313]: 📋
-              - generic [ref=e314]: 0/3
-            - heading "비자 신청" [level=3] [ref=e315]
-          - generic [ref=e317]:
-            - generic [ref=e318]:
-              - generic [ref=e319]: 📄
-              - generic [ref=e320]: 0/3
-            - heading "필수 서류" [level=3] [ref=e321]
-          - generic [ref=e323]:
-            - generic [ref=e324]:
-              - generic [ref=e325]: ✈️
-              - generic [ref=e326]: 0/3
-            - heading "도착 준비" [level=3] [ref=e327]
+      - generic [ref=e301]:
+        - generic [ref=e302]:
+          - generic [ref=e303]:
+            - img [ref=e305]
+            - generic [ref=e309]:
+              - heading "입국 준비 진행 상황" [level=2] [ref=e310]
+              - paragraph [ref=e311]: 단계별로 준비 과정을 추적하세요
+          - button "🔄 진행 상황 초기화" [ref=e312]
+        - generic [ref=e313]:
+          - generic [ref=e314]:
+            - generic [ref=e315]:
+              - img [ref=e316]
+              - generic [ref=e322]: 전체 진행률
+            - generic [ref=e324]: 0%
+          - generic [ref=e327]: ✅ 0 / 12 개 작업 완료
+        - generic [ref=e328]:
           - generic [ref=e329]:
             - generic [ref=e330]:
-              - generic [ref=e331]: 🏠
+              - generic [ref=e331]: 📋
               - generic [ref=e332]: 0/3
-            - heading "정착 업무" [level=3] [ref=e333]
-        - generic [ref=e335]:
-          - generic [ref=e336]:
-            - generic [ref=e337]:
-              - generic [ref=e338]: 📋
-              - generic [ref=e339]:
-                - heading "비자 신청" [level=3] [ref=e340]
-                - paragraph [ref=e341]: 0 / 3 완료
+            - heading "비자 신청" [level=3] [ref=e333]
+          - generic [ref=e335]:
+            - generic [ref=e336]:
+              - generic [ref=e337]: 📄
+              - generic [ref=e338]: 0/3
+            - heading "필수 서류" [level=3] [ref=e339]
+          - generic [ref=e341]:
             - generic [ref=e342]:
-              - generic [ref=e343] [cursor=pointer]:
-                - img [ref=e344]
-                - generic [ref=e346]: D-2 비자 신청 제출
-              - generic [ref=e347] [cursor=pointer]:
-                - img [ref=e348]
-                - generic [ref=e350]: 입학 허가서 수령
-              - generic [ref=e351] [cursor=pointer]:
-                - img [ref=e352]
-                - generic [ref=e354]: 재정 증명 서류 준비
-          - generic [ref=e355]:
-            - generic [ref=e356]:
-              - generic [ref=e357]: 📄
-              - generic [ref=e358]:
-                - heading "필수 서류" [level=3] [ref=e359]
-                - paragraph [ref=e360]: 0 / 3 완료
-            - generic [ref=e361]:
-              - generic [ref=e362] [cursor=pointer]:
-                - img [ref=e363]
-                - generic [ref=e365]: 유효한 여권 (6개월 이상)
-              - generic [ref=e366] [cursor=pointer]:
-                - img [ref=e367]
-                - generic [ref=e369]: 아포스티유 받은 학업 성적표
-              - generic [ref=e370] [cursor=pointer]:
-                - img [ref=e371]
-                - generic [ref=e373]: 국제 건강 보험
-          - generic [ref=e374]:
-            - generic [ref=e375]:
-              - generic [ref=e376]: ✈️
-              - generic [ref=e377]:
-                - heading "도착 준비" [level=3] [ref=e378]
-                - paragraph [ref=e379]: 0 / 3 완료
-            - generic [ref=e380]:
-              - generic [ref=e381] [cursor=pointer]:
+              - generic [ref=e343]: ✈️
+              - generic [ref=e344]: 0/3
+            - heading "도착 준비" [level=3] [ref=e345]
+          - generic [ref=e347]:
+            - generic [ref=e348]:
+              - generic [ref=e349]: 🏠
+              - generic [ref=e350]: 0/3
+            - heading "정착 업무" [level=3] [ref=e351]
+        - generic [ref=e353]:
+          - generic [ref=e354]:
+            - generic [ref=e355]:
+              - generic [ref=e356]: 📋
+              - generic [ref=e357]:
+                - heading "비자 신청" [level=3] [ref=e358]
+                - generic [ref=e361]: 0%
+            - generic [ref=e362]:
+              - generic [ref=e363] [cursor=pointer]:
+                - img [ref=e366]
+                - generic [ref=e370]: D-2 비자 신청 제출
+              - generic [ref=e371] [cursor=pointer]:
+                - img [ref=e374]
+                - generic [ref=e378]: 입학 허가서 수령
+              - generic [ref=e379] [cursor=pointer]:
                 - img [ref=e382]
-                - generic [ref=e384]: 인천공항행 항공편 예약
-              - generic [ref=e385] [cursor=pointer]:
-                - img [ref=e386]
-                - generic [ref=e388]: 공항 픽업 서비스 예약
-              - generic [ref=e389] [cursor=pointer]:
-                - img [ref=e390]
-                - generic [ref=e392]: 기숙사 예약 확인
-          - generic [ref=e393]:
-            - generic [ref=e394]:
-              - generic [ref=e395]: 🏠
-              - generic [ref=e396]:
-                - heading "정착 업무" [level=3] [ref=e397]
-                - paragraph [ref=e398]: 0 / 3 완료
-            - generic [ref=e399]:
-              - generic [ref=e400] [cursor=pointer]:
-                - img [ref=e401]
-                - generic [ref=e403]: 외국인등록증 발급 (90일 이내)
+                - generic [ref=e386]: 재정 증명 서류 준비
+          - generic [ref=e387]:
+            - generic [ref=e388]:
+              - generic [ref=e389]: 📄
+              - generic [ref=e390]:
+                - heading "필수 서류" [level=3] [ref=e391]
+                - generic [ref=e394]: 0%
+            - generic [ref=e395]:
+              - generic [ref=e396] [cursor=pointer]:
+                - img [ref=e399]
+                - generic [ref=e403]: 유효한 여권 (6개월 이상)
               - generic [ref=e404] [cursor=pointer]:
-                - img [ref=e405]
-                - generic [ref=e407]: 한국 은행 계좌 개설
-              - generic [ref=e408] [cursor=pointer]:
-                - img [ref=e409]
-                - generic [ref=e411]: 한국 휴대폰 번호 받기
-        - generic [ref=e412]:
-          - img [ref=e413]
-          - paragraph [ref=e416]:
-            - strong [ref=e417]: 도움이 필요하신가요?
+                - img [ref=e407]
+                - generic [ref=e411]: 아포스티유 받은 학업 성적표
+              - generic [ref=e412] [cursor=pointer]:
+                - img [ref=e415]
+                - generic [ref=e419]: 국제 건강 보험
+          - generic [ref=e420]:
+            - generic [ref=e421]:
+              - generic [ref=e422]: ✈️
+              - generic [ref=e423]:
+                - heading "도착 준비" [level=3] [ref=e424]
+                - generic [ref=e427]: 0%
+            - generic [ref=e428]:
+              - generic [ref=e429] [cursor=pointer]:
+                - img [ref=e432]
+                - generic [ref=e436]: 인천공항행 항공편 예약
+              - generic [ref=e437] [cursor=pointer]:
+                - img [ref=e440]
+                - generic [ref=e444]: 공항 픽업 서비스 예약
+              - generic [ref=e445] [cursor=pointer]:
+                - img [ref=e448]
+                - generic [ref=e452]: 기숙사 예약 확인
+          - generic [ref=e453]:
+            - generic [ref=e454]:
+              - generic [ref=e455]: 🏠
+              - generic [ref=e456]:
+                - heading "정착 업무" [level=3] [ref=e457]
+                - generic [ref=e460]: 0%
+            - generic [ref=e461]:
+              - generic [ref=e462] [cursor=pointer]:
+                - img [ref=e465]
+                - generic [ref=e469]: 외국인등록증 발급 (90일 이내)
+              - generic [ref=e470] [cursor=pointer]:
+                - img [ref=e473]
+                - generic [ref=e477]: 한국 은행 계좌 개설
+              - generic [ref=e478] [cursor=pointer]:
+                - img [ref=e481]
+                - generic [ref=e485]: 한국 휴대폰 번호 받기
+        - generic [ref=e486]:
+          - img [ref=e487]
+          - paragraph [ref=e490]:
+            - strong [ref=e491]: 도움이 필요하신가요?
             - text: 모든 단계에 대한 도움이 필요하시면 국제 학생 지원팀에 문의하세요.
-    - generic [ref=e419]:
-      - generic [ref=e420]:
-        - generic [ref=e421]: 🚀 곧 출시 예정
-        - heading "더 많은 기능이 준비되고 있습니다" [level=2] [ref=e422]
-        - paragraph [ref=e423]: 학생들의 편의를 위해 지속적으로 새로운 기능을 개발하고 있습니다
-      - generic [ref=e424]:
-        - generic [ref=e425]:
-          - generic [ref=e426]: 🏠
-          - heading "숙소 검색 플랫폼" [level=3] [ref=e427]
-          - paragraph [ref=e428]: 실시간 기숙사 및 원룸 정보
-          - generic [ref=e429]: Q1 2025
-        - generic [ref=e430]:
-          - generic [ref=e431]: 👥
-          - heading "학생 커뮤니티" [level=3] [ref=e432]
-          - paragraph [ref=e433]: 국가별 학생회 및 멘토링
-          - generic [ref=e434]: Q2 2025
-        - generic [ref=e435]:
-          - generic [ref=e436]: 📅
-          - heading "이벤트 캘린더" [level=3] [ref=e437]
-          - paragraph [ref=e438]: 문화 행사 및 오리엔테이션
-          - generic [ref=e439]: Q2 2025
-        - generic [ref=e440]:
-          - generic [ref=e441]: 🤝
-          - heading "버디 프로그램" [level=3] [ref=e442]
-          - paragraph [ref=e443]: 한국 학생 멘토 매칭
-          - generic [ref=e444]: Q3 2025
-        - generic [ref=e445]:
-          - generic [ref=e446]: 💼
-          - heading "취업 지원 센터" [level=3] [ref=e447]
-          - paragraph [ref=e448]: 인턴십 및 채용 정보
-          - generic [ref=e449]: Q3 2025
-        - generic [ref=e450]:
-          - generic [ref=e451]: 📱
-          - heading "모바일 앱" [level=3] [ref=e452]
-          - paragraph [ref=e453]: iOS 및 Android 앱
-          - generic [ref=e454]: Q4 2025
-      - generic [ref=e456]:
-        - heading "원하는 기능이 있으신가요?" [level=3] [ref=e457]
-        - paragraph [ref=e458]: 여러분의 의견을 들려주세요. 가장 많이 요청된 기능을 우선적으로 개발합니다.
-        - button "피드백 보내기" [ref=e459]
-    - button [ref=e460]:
-      - img [ref=e461]
-  - contentinfo [ref=e464]:
-    - generic [ref=e465]:
-      - generic [ref=e466]:
-        - generic [ref=e467]:
-          - generic [ref=e468]:
-            - generic [ref=e470]: K
-            - generic [ref=e471]: KKU Global
-          - paragraph [ref=e472]: 동남아시아와 중앙아시아에서 온 국제 학생들을 환영합니다
-          - generic [ref=e473]:
-            - link [ref=e474] [cursor=pointer]:
+    - generic [ref=e493]:
+      - generic [ref=e494]:
+        - generic [ref=e495]: 🚀 곧 출시 예정
+        - heading "더 많은 기능이 준비되고 있습니다" [level=2] [ref=e496]
+        - paragraph [ref=e497]: 학생들의 편의를 위해 지속적으로 새로운 기능을 개발하고 있습니다
+      - generic [ref=e498]:
+        - generic [ref=e499]:
+          - generic [ref=e500]: 🏠
+          - heading "숙소 검색 플랫폼" [level=3] [ref=e501]
+          - paragraph [ref=e502]: 실시간 기숙사 및 원룸 정보
+          - generic [ref=e503]: Q1 2025
+        - generic [ref=e504]:
+          - generic [ref=e505]: 👥
+          - heading "학생 커뮤니티" [level=3] [ref=e506]
+          - paragraph [ref=e507]: 국가별 학생회 및 멘토링
+          - generic [ref=e508]: Q2 2025
+        - generic [ref=e509]:
+          - generic [ref=e510]: 📅
+          - heading "이벤트 캘린더" [level=3] [ref=e511]
+          - paragraph [ref=e512]: 문화 행사 및 오리엔테이션
+          - generic [ref=e513]: Q2 2025
+        - generic [ref=e514]:
+          - generic [ref=e515]: 🤝
+          - heading "버디 프로그램" [level=3] [ref=e516]
+          - paragraph [ref=e517]: 한국 학생 멘토 매칭
+          - generic [ref=e518]: Q3 2025
+        - generic [ref=e519]:
+          - generic [ref=e520]: 💼
+          - heading "취업 지원 센터" [level=3] [ref=e521]
+          - paragraph [ref=e522]: 인턴십 및 채용 정보
+          - generic [ref=e523]: Q3 2025
+        - generic [ref=e524]:
+          - generic [ref=e525]: 📱
+          - heading "모바일 앱" [level=3] [ref=e526]
+          - paragraph [ref=e527]: iOS 및 Android 앱
+          - generic [ref=e528]: Q4 2025
+      - generic [ref=e530]:
+        - heading "원하는 기능이 있으신가요?" [level=3] [ref=e531]
+        - paragraph [ref=e532]: 여러분의 의견을 들려주세요. 가장 많이 요청된 기능을 우선적으로 개발합니다.
+        - button "피드백 보내기" [ref=e533]
+    - button [ref=e534]:
+      - img [ref=e535]
+  - contentinfo [ref=e538]:
+    - generic [ref=e539]:
+      - generic [ref=e540]:
+        - generic [ref=e541]:
+          - generic [ref=e542]:
+            - generic [ref=e544]: K
+            - generic [ref=e545]: KKU Global
+          - paragraph [ref=e546]: 동남아시아와 중앙아시아에서 온 국제 학생들을 환영합니다
+          - generic [ref=e547]:
+            - link [ref=e548] [cursor=pointer]:
               - /url: https://facebook.com
-              - img [ref=e475]
-            - link [ref=e477] [cursor=pointer]:
+              - img [ref=e549]
+            - link [ref=e551] [cursor=pointer]:
               - /url: https://twitter.com
-              - img [ref=e478]
-            - link [ref=e480] [cursor=pointer]:
+              - img [ref=e552]
+            - link [ref=e554] [cursor=pointer]:
               - /url: https://instagram.com
-              - img [ref=e481]
-            - link [ref=e484] [cursor=pointer]:
+              - img [ref=e555]
+            - link [ref=e558] [cursor=pointer]:
               - /url: https://linkedin.com
-              - img [ref=e485]
-            - link [ref=e489] [cursor=pointer]:
+              - img [ref=e559]
+            - link [ref=e563] [cursor=pointer]:
               - /url: https://youtube.com
-              - img [ref=e490]
-        - generic [ref=e493]:
-          - heading "빠른 링크" [level=3] [ref=e494]
-          - list [ref=e495]:
-            - listitem [ref=e496]:
-              - link "홈" [ref=e497] [cursor=pointer]:
+              - img [ref=e564]
+        - generic [ref=e567]:
+          - heading "빠른 링크" [level=3] [ref=e568]
+          - list [ref=e569]:
+            - listitem [ref=e570]:
+              - link "홈" [ref=e571] [cursor=pointer]:
                 - /url: /?lang=ko
-            - listitem [ref=e498]:
-              - link "프로그램 찾기" [ref=e499] [cursor=pointer]:
+            - listitem [ref=e572]:
+              - link "프로그램 찾기" [ref=e573] [cursor=pointer]:
                 - /url: /programs/?lang=ko
-            - listitem [ref=e500]:
-              - link "입학 안내" [ref=e501] [cursor=pointer]:
+            - listitem [ref=e574]:
+              - link "입학 안내" [ref=e575] [cursor=pointer]:
                 - /url: /admissions/?lang=ko
-            - listitem [ref=e502]:
-              - link "비용 & 장학금" [ref=e503] [cursor=pointer]:
+            - listitem [ref=e576]:
+              - link "비용 & 장학금" [ref=e577] [cursor=pointer]:
                 - /url: /costs/?lang=ko
-            - listitem [ref=e504]:
-              - link "캠퍼스 생활" [ref=e505] [cursor=pointer]:
+            - listitem [ref=e578]:
+              - link "캠퍼스 생활" [ref=e579] [cursor=pointer]:
                 - /url: /campus/?lang=ko
-        - generic [ref=e506]:
-          - heading "학생 정보" [level=3] [ref=e507]
-          - list [ref=e508]:
-            - listitem [ref=e509]:
-              - link "지금 지원하기" [ref=e510] [cursor=pointer]:
+        - generic [ref=e580]:
+          - heading "학생 정보" [level=3] [ref=e581]
+          - list [ref=e582]:
+            - listitem [ref=e583]:
+              - link "지금 지원하기" [ref=e584] [cursor=pointer]:
                 - /url: /apply/?lang=ko
-            - listitem [ref=e511]:
-              - link "대시보드" [ref=e512] [cursor=pointer]:
+            - listitem [ref=e585]:
+              - link "대시보드" [ref=e586] [cursor=pointer]:
                 - /url: /dashboard/?lang=ko
-            - listitem [ref=e513]:
-              - link "학생 후기" [ref=e514] [cursor=pointer]:
+            - listitem [ref=e587]:
+              - link "학생 후기" [ref=e588] [cursor=pointer]:
                 - /url: /testimonials/?lang=ko
-            - listitem [ref=e515]:
-              - link "한국 생활 정보" [ref=e516] [cursor=pointer]:
+            - listitem [ref=e589]:
+              - link "한국 생활 정보" [ref=e590] [cursor=pointer]:
                 - /url: /korea-info/?lang=ko
-        - generic [ref=e517]:
-          - heading "소통" [level=3] [ref=e518]
-          - list [ref=e519]:
-            - listitem [ref=e520]:
-              - img [ref=e521]
-              - generic [ref=e524]: 123 University Road, Seoul, South Korea 06234
-            - listitem [ref=e525]:
-              - img [ref=e526]
-              - link "+82-2-1234-5678" [ref=e528] [cursor=pointer]:
+        - generic [ref=e591]:
+          - heading "소통" [level=3] [ref=e592]
+          - list [ref=e593]:
+            - listitem [ref=e594]:
+              - img [ref=e595]
+              - generic [ref=e598]: 123 University Road, Seoul, South Korea 06234
+            - listitem [ref=e599]:
+              - img [ref=e600]
+              - link "+82-2-1234-5678" [ref=e602] [cursor=pointer]:
                 - /url: tel:+82-2-1234-5678
-            - listitem [ref=e529]:
-              - img [ref=e530]
-              - link "global@kku.ac.kr" [ref=e533] [cursor=pointer]:
+            - listitem [ref=e603]:
+              - img [ref=e604]
+              - link "global@kku.ac.kr" [ref=e607] [cursor=pointer]:
                 - /url: mailto:global@kku.ac.kr
-      - generic [ref=e534]:
-        - paragraph [ref=e535]: © 2025 Kyung Kook University. All rights reserved.
-        - generic [ref=e536]:
-          - link "Privacy Policy" [ref=e537] [cursor=pointer]:
+      - generic [ref=e608]:
+        - paragraph [ref=e609]: © 2025 Kyung Kook University. All rights reserved.
+        - generic [ref=e610]:
+          - link "Privacy Policy" [ref=e611] [cursor=pointer]:
             - /url: /privacy/?lang=ko
-          - link "Terms of Service" [ref=e538] [cursor=pointer]:
+          - link "Terms of Service" [ref=e612] [cursor=pointer]:
             - /url: /terms/?lang=ko
-          - link "Accessibility" [ref=e539] [cursor=pointer]:
+          - link "Accessibility" [ref=e613] [cursor=pointer]:
             - /url: /accessibility/?lang=ko
-  - button "Open Next.js Dev Tools" [ref=e545] [cursor=pointer]:
-    - img [ref=e546]
-  - alert [ref=e549]
+  - button "Open Next.js Dev Tools" [ref=e619] [cursor=pointer]:
+    - img [ref=e620]
+  - alert [ref=e623]
 ```

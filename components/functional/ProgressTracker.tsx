@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { CheckCircle2, Circle, AlertCircle, Save, Trophy, Target } from 'lucide-react';
+import { useLanguageStore } from '@/lib/store/languageStore';
+import { getTranslation } from '@/lib/i18n/translations';
 
 interface Task {
   id: string;
@@ -14,7 +16,10 @@ interface ProgressTrackerProps {
   t: any;
 }
 
-export default function ProgressTracker({ t }: ProgressTrackerProps) {
+export default function ProgressTracker({ t: _t }: ProgressTrackerProps) {
+  // Use language store instead of props for client-side language switching
+  const { currentLocale } = useLanguageStore();
+  const t = getTranslation(currentLocale);
   const [tasks, setTasks] = useState<Task[]>([
     // Visa Tasks
     { id: 'visa-1', title: t.progress?.tasks?.visaApplication || 'Submit D-2 Visa Application', completed: false, category: 'visa' },

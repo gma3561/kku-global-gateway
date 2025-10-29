@@ -37,22 +37,30 @@ export default function Navigation({ t, locale }: NavigationProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Sync locale with store on mount and URL change
+  // Initialize locale from URL on mount
   useEffect(() => {
-    if (locale !== currentLocale) {
-      setLocale(locale);
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const langParam = params.get('lang') as Locale;
+      if (langParam && locales.includes(langParam)) {
+        setLocale(langParam);
+      }
     }
-  }, [locale, currentLocale, setLocale]);
+  }, []); // Only run once on mount
 
   const handleLanguageChange = (langCode: Locale) => {
     setLocale(langCode);
     setIsLangMenuOpen(false);
 
-    // Reload page with new language parameter
+    // Save to localStorage
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('preferred-language', langCode);
+    }
+
+    // Use Next.js router instead of window.location.href to preserve client state
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.set('lang', langCode);
-    const newUrl = `${pathname}?${searchParams.toString()}`;
-    window.location.href = newUrl;
+    router.push(`${pathname}?${searchParams.toString()}`);
   };
 
   const currentLanguage = languages.find((lang) => lang.code === currentLocale) || languages[0];

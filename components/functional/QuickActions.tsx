@@ -13,13 +13,19 @@ import {
   Users,
   Globe
 } from 'lucide-react';
+import { useLanguageStore } from '@/lib/store/languageStore';
+import { getTranslation } from '@/lib/i18n/translations';
 
 interface QuickActionsProps {
   t: any;
   locale: string;
 }
 
-export default function QuickActions({ t, locale }: QuickActionsProps) {
+export default function QuickActions({ t: _t, locale: _locale }: QuickActionsProps) {
+  // Use language store instead of props for client-side language switching
+  const { currentLocale } = useLanguageStore();
+  const t = getTranslation(currentLocale);
+  const locale = currentLocale;
   const actions = [
     {
       title: t.quickActions?.visaGuide || 'Visa Application Guide',

@@ -194,11 +194,11 @@ export const id = {
     },
   },
   emergency: {
-    title: 'Emergency Contacts',
+    title: 'Kontak Darurat',
     contacts: {
-      campus: 'Campus Security',
-      international: 'International Office',
-      support: '24/7 Student Support',
+      campus: 'Keamanan Kampus',
+      international: 'Kantor Internasional',
+      support: 'Dukungan Mahasiswa 24/7',
     },
   },
   quickActions: {
