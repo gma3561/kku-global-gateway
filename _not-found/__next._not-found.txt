@@ -1,4 +1,4 @@
 1:"$Sreact.fragment"
 2:I[71539,["/kku-global-gateway/_next/static/chunks/4768e197048e8ad3.js","/kku-global-gateway/_next/static/chunks/becd837ff6123bc5.js"],"default"]
 3:I[17298,["/kku-global-gateway/_next/static/chunks/4768e197048e8ad3.js","/kku-global-gateway/_next/static/chunks/becd837ff6123bc5.js"],"default"]
-0:{"buildId":"qhSGR1DdpYtKK4_0eiXmK","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"lCn_fmTV5HyTK3CxGLUSj","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
